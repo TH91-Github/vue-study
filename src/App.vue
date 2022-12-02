@@ -1,26 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="test">
+    <h1 class="test-tit" @click="increase">
+    {{count}}
+    </h1>
+    <div v-if="count>4">
+      4보다 큽니다
+    </div>
+    <ul>
+      <li v-for="arrName in arrTest" :key="arrName">
+        {{ arrName}}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      count : 0,
+      arrTest: ["반복1","반복2","반복3"]
+    }
+  },
+  methods: {
+    increase() {
+      this.count += 1
+      console.log(this.count)
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
