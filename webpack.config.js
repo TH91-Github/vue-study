@@ -7,8 +7,8 @@ module.exports = {
   // 결과물(번들)을 변환하는 설정
   output: {
     // 주석은 기본값, `__dirname`은 현재 파일의 위치를 알려주는 NodeJS 전역 변수
-     filename:"bundle.js",
-     path: path.resolve(__dirname,"dist")
+    filename:"bundle.js",
+    path: path.resolve(__dirname,"dist")
     //clean: true
   },
 
@@ -18,7 +18,9 @@ module.exports = {
         test: /\.s?css$/,
         use:[
           'style-loader',
-          'css-loader'
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
         ]
       }
     ]

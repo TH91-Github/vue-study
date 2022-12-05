@@ -1,4 +1,7 @@
 <template>
+  <div>
+    <router-view></router-view>
+  </div>
   <div class="test">
     <h1 class="test-tit" @click="increase">
     {{count}}
@@ -31,6 +34,16 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+$bgColor:#333;
+.test{
+  display:flex;
+  box-sizing:border-box;
+  background:$bgColor;
+}
+h1{
+  color:blue;
+}
+
 
 </style>
