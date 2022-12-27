@@ -1,6 +1,7 @@
 
 <template>
-  <div>
+  <div class="wrap">
+    <HeaderView></HeaderView>
     <router-view></router-view>
   </div>
   <div class="test">
@@ -23,7 +24,12 @@
 </template>
 
 <script>
+import HeaderView from '@/components/HeaderView'
+
 export default {
+  components: {
+    HeaderView
+  },
   data() {
     return {
       objectOfAttrs: {
@@ -59,25 +65,33 @@ export default {
     count (){ // data :count  / count function () { } : 생략 -> count(){}
       console.log('count:', this.count)
     }
-  },
-  methods:{
-    add() {
-      this.reversedMessage += "!?"
-    }
   }
 }
+
 
 
 </script>
 
 <style lang="scss">
-$bgColor:#333;
-.test{
-  display:flex;
-  box-sizing:border-box;
-  background:$bgColor;
+@import "@/assets/scss/_common.scss";
+#app {
+  height:100%;
 }
-h1{
-  color:blue;
+.wrap {
+  overflow: hidden;
+  position: relative;
+  min-height: 100%;
+  &::before {
+    position: absolute;
+    z-index:-1;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 250%;
+    background: #3d1797;
+    transform: translate(-150%, -50%) rotate(45deg);
+    content: "";
+    pointer-events : none;
+  }
 }
 </style>
