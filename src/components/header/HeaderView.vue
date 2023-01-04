@@ -78,7 +78,7 @@ export default {
     .logo {
       width:32px;
       height:32px;
-      background:url('../../public/favicon.ico');
+      background:url('@/../public/favicon.ico');
       text-indent:-9999px;
     }
   }
@@ -89,6 +89,7 @@ export default {
     }
   }
   &__more {
+    width:100px;
     &-btn {
       position:relative;
     }

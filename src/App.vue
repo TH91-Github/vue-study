@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import HeaderView from '@/components/HeaderView'
+import HeaderView from '@/components/header/HeaderView'
 
 export default {
   components: {
@@ -32,10 +32,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/assets/scss/variables.scss';
-@import '@/assets/scss/common.scss';
 #app {
   height:100%;
-  color:$point-color1;
 }
 </style>
