@@ -18,7 +18,6 @@ module.exports = {
       template: './index.html'
     })
   ],
-
   module: {
     rules: [
       {
@@ -26,7 +25,6 @@ module.exports = {
         use:[
           'style-loader',
           'css-loader',
-          'postcss-loader', // 제대로 적용이 안됨 : 추후 재진행
           'sass-loader'
         ]
       }

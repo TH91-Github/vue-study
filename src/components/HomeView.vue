@@ -1,17 +1,25 @@
 <template>
-  <div class="cm-home">
-    <div class="cm-home__inner">
-      <div class="cm-home__cont">
-        <SliderCommon
-          class="test"
-          :swiperData="swiperData">
-          <div class="test">
-            
+  <div class="cm-wrap">
+    <div class="cm-home">
+      <div class="cm-home__inner">
+        <div class="cm-home__cont">
+          <!-- 메뉴 카테고리 -->
+          <div class="cm-home__category">
+            <SliderCommon
+              class="cm-home__category-swiper"
+              :swiperOpt="swiperOpt" :slideList="slideList">
+              <template v-slot="item" >
+                <div>
+                  <p>{{item.name}}</p>
+                  <p>{{item.href}}</p>
+                </div>
+              </template>
+            </SliderCommon>
           </div>
-        </SliderCommon>
-      </div>
+        </div>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -25,26 +33,38 @@ export default {
       slideList : [
         {
           name:'Vue',
+          tit:'',
+          subTit:'',
           href:'/vue'
         },
         {
           name: 'Guide',
+          tit:'',
+          subTit:'',
           href: '/guide'
         },
         {
           name: 'Unit Test',
+          tit:'',
+          subTit:'',
           href: '/unittest'
         },
         {
           name: 'JavaScript',
+          tit:'',
+          subTit:'',
           href: '/javascript'
         },
         {
           name: 'HTML',
+          tit:'',
+          subTit:'',
           href: '/html'
         },
         {
           name: 'CSS',
+          tit:'',
+          subTit:'',
           href: '/html'
         },
       ],
@@ -57,11 +77,11 @@ export default {
           },
           425: {
             slidesPerView: 2,
-            slidesPerGroup: 2,
+            slidesPerGroup: 1,
           },
           768: {
             slidesPerView: 3,
-            slidesPerGroup: 3,
+            slidesPerGroup: 1,
           },
         }
       },
@@ -72,6 +92,24 @@ export default {
 
 <style scoped lang="scss">
 @import '@/assets/scss/variables.scss';
+
+.cm-wrap {
+  overflow: hidden;
+  position: relative;
+  min-height: 100%;
+  &::before {
+    position: absolute;
+    z-index:-1;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 250%;
+    background: #3d1797;
+    transform: translate(-150%, -50%) rotate(45deg);
+    content: "";
+    pointer-events : none;
+  }
+}
 .cm-home {
   display: flex;
   flex-direction: column;

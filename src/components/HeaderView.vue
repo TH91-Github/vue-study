@@ -62,9 +62,11 @@ export default {
 <style scoped lang="scss">
 .cm-header{ 
   display:flex;
-  position:flex;
+  position:fixed;
+  z-index:999;
   top:0;
   left:0;
+  width:100%;
   padding:8px 30px;
   background: #fff;
   &__logo{
