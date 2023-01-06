@@ -1,10 +1,11 @@
 <template>
   <swiper
     class="cm-swiper"
+    :class="$attrs.class"
     v-bind="swiperOpt"
     @swiper="onSwiper"
     >
-    <SwiperSlide
+    <SwiperSlide 
       v-for="item in slideList"
       :key="item.name">
       <SliderItem>
@@ -50,18 +51,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 
-.cm-swiper { 
-  position:relative;
-  width:100%;
-  
-}
-.swiper-slide {
-    width:calc(100%/5);
-    height:300px;
-    border:1px solid red;
-    box-sizing:border-box;
-  }
 </style>
 

@@ -20,8 +20,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-@import '@/assets/scss/variables.scss';
+<style lang="scss">
 .base-slide {
   background: $point-color-dark;
   &-item {

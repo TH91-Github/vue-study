@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
+#app, .wrap {
   height:100%;
 }
 </style>

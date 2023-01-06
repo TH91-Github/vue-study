@@ -12,6 +12,7 @@ $font-suit:'SUIT', sans-serif;
   @return (remove-unit(calc($px / $base)))* 1rem;
 }
 
+
 /*** color ***/
 $point-color1: #3d1797;
 $point-color2:#1c7947;

@@ -1,22 +1,15 @@
 <template>
-  <div class="wrap">
-    <p class="wrap-text">
-      asdasdasdMainView
-    </p>
-  </div>
+  <div class="main-wrap">
 
-  <div class="cm-wrap">
-    <div class="cm-wrap-txt">
-      zzzzz
-    </div>
+    <!-- 맛 지도 -->
+    <FoodMap></FoodMap>
   </div>
-
-</template> 
-``
+</template>
 <script>
+import FoodMap from '@/components/FoodMap/FoodMap.vue'
 export default {
   components: {
-
+    FoodMap
   },
   data() {
     return {
@@ -28,27 +21,8 @@ export default {
 
 
 <style scoped lang="scss">
-$point-color1: #3d1797;
-
-$component-name: '.cm-wrap';
-
-#{$component-name} {
-  border:1px solid green;
-}
-
-.cm-wrap {
-
-}
-
-
-
-
-
-
-.wrap {
-  &-text{
-    margin:50px;
-    color:$point-color1;
-  }
+.main-wrap {
+  position: relative;
+  padding-top: 48px;
 }
 </style>

@@ -46,3 +46,32 @@ a:focus{
   outline: 1px dotted;
   outline: -webkit-focus-ring-color auto;
 }
+
+
+
+.ico {
+  display:inline-block;
+  &-mark {
+    display:inline-block;
+    padding:3px 5px;
+    border-radius:3px;
+    font-weight:550;
+    text-shadow:0px 1px 2px rgba(0,0,0,1);
+    color:#fff;
+  }
+  &-html{
+    background:#e9622a;
+  }
+  &-css{
+    background:#30ace0;
+  }
+  &-js{
+    background:#f8e01f;
+  }
+  &-guide {
+    background: $point-color1;
+  }
+  &-vue {
+    background: #00bb7c;
+  }
+}

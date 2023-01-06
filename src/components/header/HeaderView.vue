@@ -45,12 +45,12 @@ export default {
           href:'/vue'
         },
         {
-          name: 'Javascript',
-          href: '/javascript'
+          name: '메모',
+          href: '/RecordStory'
         },
         {
-          name: 'Javascript',
-          href: '/javascript'
+          name: '맛지도',
+          href: '/FoodMap'
         }
       ]
     }
@@ -69,6 +69,7 @@ export default {
   width:100%;
   padding:8px 30px;
   background: #fff;
+  box-sizing:border-box;
   &__logo{
     flex-shrink: 0; 
     width: 100px;
@@ -86,6 +87,22 @@ export default {
     flex-grow:1;
     &-list{
       display: flex;
+    }
+    &-item{ 
+      margin-left:10px;
+      &:first-child {
+        margin-left:0;
+      }
+    }
+    &-link {
+      font-weight: 550;
+      transition: $base-transition;
+      &:hover, &.focus {
+        color: $point-color1;
+      }
+      &.active {
+        color: $point-color2;
+      }
     }
   }
   &__more {
