@@ -1,5 +1,6 @@
 
 <template>
+  <!-- https://th91-vue.netlify.app/ -->
   <div class="wrap">
     <HeaderView></HeaderView>
     <router-view></router-view>
@@ -7,6 +8,7 @@
 </template>
 
 <script>
+import commonJs from "@/assets/js/common.js"
 import HeaderView from '@/components/header/HeaderView'
 
 export default {
@@ -18,10 +20,12 @@ export default {
       count : 0,
     }
   },
-  methods: {
-   
+  mounted (){
+    commonJs()
   },
-  
+  methods: {
+    
+  },
   computed: {
 
   },

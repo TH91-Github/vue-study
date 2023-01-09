@@ -15,34 +15,54 @@ const router = createRouter({
     { // 잘못된 경로 : ErrorPage
       path : "/:pathMatch(.*)",
       name : "not-found",
+      meta: {
+        tit : "Error" 
+      },
       component : ErrorPage
     },
     { 
       path : "/", 
       name : "MainView", 
+      meta: {
+        tit : "MainView" 
+      },
       component : MainView
     },
     { 
       path : "/FoodMap", 
       name : "FoodMap", 
+      meta: {
+        tit : "FoodMap" 
+      },
       component : FoodMap
     },
     { 
       path : "/FoodMapView", 
       name : "FoodMap 메인 노출", 
+      meta: {
+        tit : "FoodMap" 
+      },
       component : FoodMapView
     },
     { 
       path : "/RecordStory", 
       name : "RecordStory", 
+      meta: {
+        tit : "RecordStory" 
+      },
       component : RecordStory 
     },
     { 
       path : "/RecordStoryView", 
       name : "RecordStory 메인 노출", 
+      meta: {
+        tit : "RecordStory" 
+      },
       component : RecordStoryView 
     },
   ]
 });
-
+router.afterEach((to) => { // title 태그  변경
+  document.title = to.meta.tit;
+});
 export default router;

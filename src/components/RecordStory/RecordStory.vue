@@ -9,7 +9,7 @@
               class="cm-home__category-swiper"
               :swiperOpt="swiperOpt" :slideList="slideList">
               <template v-slot="item">
-                <a href="#" class="cm-home__category-item">
+                <a href="#" @click="categoryClick" class="cm-home__category-item">
                   <div class="item-head">
                     <span class="ico-mark" :class="[item.mark]">{{item.name}}</span>
                     <p class="item-head-tit">{{item.tit}}</p>
@@ -22,6 +22,31 @@
                 </a>
               </template>
             </SliderCommon>
+            <div class="cm-home__info">
+              <div class="cm-home__history">
+                <div class="cm-home__history-inner">
+                  <div class="cm-home__history-list">
+
+                  </div>
+                </div>
+              </div>
+              <div class="cm-home__preview">
+                <div class="cm-home__preview-cont">
+
+                </div>
+                <div class="share">
+                  <ul class="share-list">
+                    <li class="share-item">
+                      <a href="#" class="ico github" target="_blank" title="github 새 창 보기"></a>
+                    </li>
+                    <li class="share-item">
+                      <a href="https://codepen.io/th91/pen/rNKrpzw" class="ico codepen" target="_blank" title="codepen 새 창 보기">
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -119,6 +144,14 @@ export default {
       },
     }
   },
+  methods : {
+    categoryClick(event) {
+      let _this = event.target; 
+      
+      console.log(_this)
+
+    }
+  }
 }
 </script>
 

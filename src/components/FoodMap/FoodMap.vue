@@ -1,6 +1,6 @@
 <template>
   <div class="cm-food">
-    ddㅁㄴㅇㅁㄴㅇ
+    맛지도 컨텐츠
   </div>
 </template>
 
