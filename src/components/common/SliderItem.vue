@@ -23,10 +23,10 @@ export default {
 <style lang="scss">
 .base-slide {
   height: rem(200px);
-  background: $point-color-dark;
+  background: $color-dark;
   &-item {
     
-    color:#fff;
+    color:$color-white;
   }
 }
 </style>

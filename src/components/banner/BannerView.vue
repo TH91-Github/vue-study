@@ -1,4 +1,11 @@
 <template>
+  <!--
+    class 안내
+    bg-white : 텍스트 어둡게
+    w-full : 최대 : 1920 / 기본 1280
+    txt-left : 텍스트 왼쪽 정렬 / 기본 center
+  -->
+
   <div class="cm-banner" :class="$attrs.class">
     <!-- 
       슬라이드 배너 
@@ -12,29 +19,33 @@
         <slot>테스트 배너</slot>
       </CmSlider>
     </div>
-    
-    <!-- 기본 배너 -->
+    <!-- default 배너 -->
     <div
       v-else 
       class="cm-banner__inner"
       >
-      <slot>
         <div class="cm-banner__visual">
-          <!-- 이미지 경로가 있는 경우 -->
+          <!-- background 이미지 체크 / default : 기본 색상 및 색상 변경 가능 -->
           <div 
             v-if="cmOpt.bgSrc !== undefined"
-            class="cm-banner__visual-bg"
+            class="cm-banner__visual-bg img"
             :style="{backgroundImage : 'url('+require(`@/assets/img/${cmOpt.bgSrc}`)+')'}">
           </div>
-          <!-- 타이틀, 텍스트 -->
-          <div 
-            v-if="cmOpt.info !== undefined"
-            class="cm-banner__visual-cont">
-            <!-- <p class="cm-banner__visual-tit">{{ cmOpt.info.tit }}</p>
-            <p class="cm-banner__visual-txt">{{ cmOpt.info.txt }}</p> -->
+          <div
+            v-else
+            class="cm-banner__visual-bg base"
+            :style="$attrs.style">
           </div>
+          <!-- 타이틀, 텍스트 있는 경우 / default : 빈 값 -->
+          <slot>
+            <div 
+              v-if="cmOpt.info !== undefined"
+              class="cm-banner__visual-cont">
+              <p class="cm-banner__visual-tit">{{ cmOpt.info.tit }}</p>
+              <p class="cm-banner__visual-txt">{{ cmOpt.info.txt }}</p>
+            </div>
+          </slot>
         </div>
-      </slot>
     </div>
   </div>
 </template>
@@ -58,17 +69,15 @@ export default {
     }
   },
   mounted () {
-
   }
 }
 </script>
-
 <style lang="scss">
 .cm-banner {
   position:relative;
   width:100%;
   max-width: $screen-m;
-  &.full {
+  &.w-full {
     width:100%;
     max-width:1920px;
   }
@@ -79,41 +88,45 @@ export default {
     margin: 0 auto;
   }
   &__visual {
+    $minH:rem(300px);
     display:flex;
     flex-direction: column;
     justify-content: center;
     position:relative;
-    min-height:rem(250px);
-    border:1px solid red;
+    min-height: $minH;
     text-align:center;
     &-bg {
-      overflow:hidden;
       position:absolute;
+      z-index:-1;
       top:0; 
       left:0;
       width:100%;
-      height:rem(250px);
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size:cover;
-      &::before {
-        display:block;
-        position:absolute;
-        top:0;
-        left:0;
-        width:100%;
-        height:100%;
-        background: rgba(0,0,0,.5);
-        content:"";
+      height: $minH;
+      &.img {
+        overflow:hidden;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size:cover;
+        &::before {
+          display:block;
+          position:absolute;
+          top:0;
+          left:0;
+          width:100%;
+          height:100%;
+          background: rgba(0,0,0,.6);
+          content:"";
+        }
       }
+      
       &.base {
         display:flex;
         flex-direction: column;
         justify-content: center;
-        background: $sub-black;
+        background: $sub-dark;
         .desc {
           font-size: rem(20px);
-          color:#fff;
+          color: $color-white;
         }
         &::before {
           display:none;
@@ -125,21 +138,29 @@ export default {
       z-index:1;
     }
     &-tit {
-      color:#fff;
+      font-size: rem(20px);
+      font-weight: 550;
+      color: $color-white;
     }
     &-txt {
-      color:#fff;
+      margin-top: rem(10px);
+      color: $color-white;
     }
   }
   
+  &.txt-left {
+    .cm-banner__visual-cont {
+      padding:0 100px;
+      text-align: left;
+    }
+  }
   &.bg-white {
     .cm-banner__visual {
-
       &-tit {
-        color: $point-color-dark;
+        color: $color-dark;
       }
       &-txt{
-        color: $point-color-dark;
+        color: $color-dark;
       }
     }
   }

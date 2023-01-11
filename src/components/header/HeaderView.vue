@@ -41,7 +41,7 @@ export default {
       },
       navigations: [
         {
-          name:'컴포넌트',
+          name:'가이드',
           href:'/guide'
         },
         {
@@ -68,7 +68,7 @@ export default {
   left:0;
   width:100%;
   padding:8px 30px;
-  background: #fff;
+  background: $color-white;
   box-sizing:border-box;
   &__logo{
     flex-shrink: 0; 

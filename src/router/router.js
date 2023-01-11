@@ -1,7 +1,9 @@
 import { createWebHistory, createRouter } from "vue-router";
 import ErrorPage from "@/components/ErrorPage"
 import MainView from "@/components/MainView"
-
+/* 컴포넌트 리스트 */
+import guideView from "@/components/guide/guideView"
+import BannerView from "@/components/banner/BannerView"
 /* 맛 지도 */
 import FoodMap from "@/components/FoodMap/FoodMap"  // 상세 페이지
 import FoodMapView from "@/components/FoodMap/FoodMapView"  // 메인 노출 될 요약 정보
@@ -24,9 +26,17 @@ const router = createRouter({
       path : "/", 
       name : "MainView", 
       meta: {
-        tit : "MainView" 
+        tit : "Vue th91" 
       },
       component : MainView
+    },
+    { 
+      path : "/guide", 
+      name : "가이드", 
+      meta: {
+        tit : "컴포넌트 산출물" 
+      },
+      component : guideView
     },
     { 
       path : "/FoodMap", 
@@ -59,6 +69,16 @@ const router = createRouter({
         tit : "RecordStory" 
       },
       component : RecordStoryView 
+    },
+
+    // component
+    { 
+      path : "/banner", 
+      name : "BannerView 컴포넌트", 
+      meta: {
+        tit : "BannerView" 
+      },
+      component : BannerView 
     },
   ]
 });

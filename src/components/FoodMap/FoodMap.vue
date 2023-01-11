@@ -1,30 +1,13 @@
 <template>
   <div class="cm-food">
     <div class="cm-food__inner">
-      <div>
-        <p> 테스트</p>
-        <!-- <CmBanner>
-
-        </CmBanner> -->
-        <hr>
-        <!-- <CmBanner>
-          <div class="tit-zone">
-            <p class="tit">태그가 삽입된 경우</p>
-          </div>
-        </CmBanner> -->
-      </div>
-      <hr>
-
-
       <!-- 배너 -->
       <div class="cm-food__banner">
         <CmBanner
-          class="cm-food__banner-visual full"
+          class="cm-food__banner-visual w-full"
           :cmOpt="bannerOpt">
         </CmBanner>
       </div>
-
-      <hr>
       <div class="cm-food__content">
         <!-- 슬라이드-->
         <CmSlider class="cm-food-swiper">
@@ -56,7 +39,7 @@ export default {
         bgSrc: "@food_map_visual.png",
       }
     }
-  }
+  },
 }
 </script>
 
