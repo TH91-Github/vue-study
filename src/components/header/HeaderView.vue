@@ -41,8 +41,8 @@ export default {
       },
       navigations: [
         {
-          name:'Vue',
-          href:'/vue'
+          name:'컴포넌트',
+          href:'/guide'
         },
         {
           name: '메모',

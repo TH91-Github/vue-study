@@ -5,23 +5,23 @@
         <div class="cm-home__cont">
           <!-- 메뉴 카테고리 -->
           <div class="cm-home__category">
-            <SliderCommon
+            <CategorySlider
               class="cm-home__category-swiper"
               :swiperOpt="swiperOpt" :slideList="slideList">
-              <template v-slot="item">
+              <template v-slot="swiper">
                 <a href="#" @click="categoryClick" class="cm-home__category-item">
                   <div class="item-head">
-                    <span class="ico-mark" :class="[item.mark]">{{item.name}}</span>
-                    <p class="item-head-tit">{{item.tit}}</p>
-                    <p class="item-head-txt">{{item.txt}}</p>
+                    <span class="ico-mark" :class="[swiper.mark]">{{swiper.name}}</span>
+                    <p class="item-head-tit">{{swiper.tit}}</p>
+                    <p class="item-head-txt">{{swiper.txt}}</p>
                   </div>
                   <div class="item-info">
-                    <p class="item-info-page">게시글 : <span class="num">{{item.pageNum}}</span></p>
-                    <p class="item-info-update">최종 수정일 : <span class="date">{{item.updateDate}}</span></p>
+                    <p class="item-info-page">게시글 : <span class="num">{{swiper.pageNum}}</span></p>
+                    <p class="item-info-update">최종 수정일 : <span class="date">{{swiper.updateDate}}</span></p>
                   </div>
                 </a>
               </template>
-            </SliderCommon>
+            </CategorySlider>
             <div class="cm-home__info">
               <div class="cm-home__history">
                 <div class="cm-home__history-inner">
@@ -55,10 +55,10 @@
 </template>
 
 <script>
-import SliderCommon from '@/components/common/SliderCommon';
+import CategorySlider from '@/components/common/SliderCommon';
 export default {
   components: {
-    SliderCommon
+    CategorySlider
   },
   props :{
     item : {
@@ -147,9 +147,7 @@ export default {
   methods : {
     categoryClick(event) {
       let _this = event.target; 
-      
       console.log(_this)
-
     }
   }
 }

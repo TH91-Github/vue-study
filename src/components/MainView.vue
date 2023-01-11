@@ -23,6 +23,5 @@ export default {
 <style scoped lang="scss">
 .main-wrap {
   position: relative;
-  padding-top: 48px;
 }
 </style>

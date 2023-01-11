@@ -2,8 +2,8 @@
   <slot>
     <!-- 대체 슬라이드 -->
     <div class="base-slide">
-      <div class="swiper-slide base-slide-item">
-        
+      <div class="base-slide-item">
+        슬라이드
       </div>
     </div>
     <!-- // 대체 슬라이드 -->
@@ -22,8 +22,10 @@ export default {
 
 <style lang="scss">
 .base-slide {
+  height: rem(200px);
   background: $point-color-dark;
   &-item {
+    
     color:#fff;
   }
 }

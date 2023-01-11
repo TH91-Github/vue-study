@@ -33,10 +33,14 @@ export default {
 
   }
 }
+
 </script>
 
 <style lang="scss">
 #app, .wrap {
   height:100%;
+}
+.wrap {
+  padding: 50px 0 0;
 }
 </style>
