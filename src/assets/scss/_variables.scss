@@ -4,19 +4,12 @@ $base-font-size: 16px;
 // 참고 url : https://sunn.us/suit/
 $font-suit:'SUIT', sans-serif;
 
-@function remove-unit($value) {
-  @return calc($value / ($value * 0 + 1));
-}
-
-@function rem($px, $base: $base-font-size) {
-  @return (remove-unit(calc($px / $base)))* 1rem;
-}
-
-
 /*** color ***/
 $point-color1: #3d1797;
 $point-color2:#1c7947;
 $point-color3:#f24c4c;
+$point-color4:#fee500;
+$point-color5:#6dcfdc;
 $color-dark: #262626;
 $color-white: #fff;
 $sub-color1: #7f7f7f;
@@ -33,7 +26,16 @@ $screen-xl: 1920px;
 /*** transition ***/
 $base-transition: all .3s;
 
-/*** mixin **/
+/*** function ***/
+@function remove-unit($value) {
+  @return calc($value / ($value * 0 + 1));
+}
+
+@function rem($px, $base: $base-font-size) {
+  @return (remove-unit(calc($px / $base)))* 1rem;
+}
+
+/*** mixin ***/
 @mixin ellipsis($line, $hiehgt:$base-font-size){
   display: -webkit-box;
   overflow:hidden;
@@ -45,4 +47,12 @@ $base-transition: all .3s;
   white-space:normal;
   word-break: break-all;
   text-overflow:ellipsis;
+}
+
+@mixin innerOpt() {
+  position:relative;
+  width:100%;
+  max-width: $screen-m;
+  margin: 0 auto;
+  box-sizing: border-box;
 }

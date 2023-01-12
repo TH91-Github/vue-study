@@ -2,11 +2,23 @@
   <div class="cm-guide">
     <div class="cm-guide__inner">
       <div class="cm-guide__template">
-        <h2 class="title">산출물</h2>
-        <div class="cm-guide__template-header">
-          <p class="cm-guide__template-tit">CSS 변수</p>
+        <h2 class="title">산출물 - 키워드 검색</h2>
+        <div class="cm-guide__template-cont">
+          <p class="cm-guide__template-tit">CSS - 변수</p>
           <div class="cm-guide__list">
-            <p class="cm-guide__list-tit"><span class="cm-mark">Color</span></p>
+            <p class="cm-guide__list-tit"><span class="cm-mark">#Font #폰트</span></p>
+            <ul class="cm-guide__list-wrap row">
+              <li class="item">
+                <div class="cm-guide__font">
+                  <button type="button" class="btn font-family">
+                    <span class="kind">font-family</span>
+                    <span class="val">'SUIT', sans-serif;</span>
+                  </button>
+                  <p class="tit">$font-suit</p>
+                </div>
+              </li>
+            </ul>
+            <p class="cm-guide__list-tit"><span class="cm-mark">#Color #컬러 #색상</span></p>
             <ul class="cm-guide__list-wrap row">
               <li class="item">
                 <div class="cm-guide__color">
@@ -30,6 +42,22 @@
                     <span class="codes">#f24c4c</span>
                   </button>
                   <p class="tit">$point-color3</p>
+                </div>
+              </li>
+              <li class="item">
+                <div class="cm-guide__color">
+                  <button type="button" class="btn point-color4">
+                    <span class="codes">#fee500</span>
+                  </button>
+                  <p class="tit">$point-color4</p>
+                </div>
+              </li>
+              <li class="item">
+                <div class="cm-guide__color">
+                  <button type="button" class="btn point-color5">
+                    <span class="codes">#6dcfdc</span>
+                  </button>
+                  <p class="tit">$point-color5</p>
                 </div>
               </li>
               <li class="item">
@@ -73,7 +101,7 @@
                 </div>
               </li>
             </ul>
-            <p class="cm-guide__list-tit"><span class="cm-mark">Screen Size</span></p>
+            <p class="cm-guide__list-tit"><span class="cm-mark">#Screen Size #스크린 #사이즈 #반응형</span></p>
             <ul class="cm-guide__list-wrap row">
               <li class="item">
                 <div class="cm-guide__screen">
@@ -118,16 +146,41 @@
             </ul>
           </div>
         </div>
-        <div class="cm-guide__template-header">
-          <p class="cm-guide__template-tit">Common</p>
+        <div class="cm-guide__template-cont">
+          <p class="cm-guide__template-tit">Common - 공통</p>
           <div class="cm-guide__list">
-            <p class="cm-guide__list-tit"><span class="cm-mark">Btn</span></p>
+            <p class="cm-guide__list-tit"><span class="cm-mark">Btn #버튼 #Button</span></p>
+            <ul class="cm-guide__list-wrap">
+              <li class="cm-guide__list-link">
+                <router-link
+                  to="/error"
+                  >
+                  /components/common/uiGuide
+                </router-link>
+              </li>
+            </ul>
+            <p class="cm-guide__list-tit"><span class="cm-mark">Slider(Swiper) #슬라이드</span></p>
+            <ul class="cm-guide__list-wrap">
+              <li class="cm-guide__list-link">
+                <router-link
+                  to="/error"
+                  >
+                  /components/common/uiGuide
+                </router-link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="cm-guide__template-cont">
+          <p class="cm-guide__template-tit">Component - 컴포넌트</p>
+          <div class="cm-guide__list">
+            <p class="cm-guide__list-tit"><span class="cm-mark">#Banner #배너 #띠배너</span></p>
             <ul class="cm-guide__list-wrap">
               <li class="cm-guide__list-link">
                 <router-link
                   to="/banner"
                   >
-                  /common/banner/BannerView.vue
+                  /components/banner/BannerGuide
                 </router-link>
               </li>
             </ul>
@@ -183,7 +236,7 @@ export default {
       font-weight:550;
       font-size: rem(26px);
     }
-    &-header {
+    &-cont {
       margin-top: rem(20px);
     }
     &-tit {
@@ -209,10 +262,9 @@ export default {
     }
     &-link {
       padding: rem(5px) 0;
-      border-top:1px solid $sub-color1;
-      
+      border-top:1px solid $sub-color2;
       &:last-child {
-        border-bottom:1px solid $sub-color1;
+        border-bottom:1px solid $sub-color2;
       }
     }
     &-wrap{
@@ -226,6 +278,19 @@ export default {
     margin-top: rem(5px);
     font-size: rem(14px);
     font-weight:550;
+  }
+  &__font {
+    text-align:center;
+    .font-family{
+      padding:3px;
+      border: 1px solid $sub-color2;
+      span {
+        display:block;
+        &.val {
+          color:$point-color3;
+        }
+      }
+    }
   }
   &__color {
     margin: 10px;
@@ -245,6 +310,12 @@ export default {
       }
       &.point-color3{ 
         background:$point-color3;
+      }
+      &.point-color4{ 
+        background:$point-color4;
+      }
+      &.point-color5{ 
+        background:$point-color5;
       }
       &.color-dark {
         background : $color-dark;

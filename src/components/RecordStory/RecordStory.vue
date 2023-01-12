@@ -180,10 +180,7 @@ export default {
   padding: 100px 30px;
   box-sizing: border-box;
   &__inner { 
-    width:100%;
-    max-width: $screen-m;
-    min-height: 100px;
-    margin: 0 auto;
+    @include innerOpt();
   }
   &__category {
     &-swiper {

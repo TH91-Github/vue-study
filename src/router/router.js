@@ -3,7 +3,7 @@ import ErrorPage from "@/components/ErrorPage"
 import MainView from "@/components/MainView"
 /* 컴포넌트 리스트 */
 import guideView from "@/components/guide/guideView"
-import BannerView from "@/components/banner/BannerView"
+import BannerGuide from "@/components/banner/BannerGuide"
 /* 맛 지도 */
 import FoodMap from "@/components/FoodMap/FoodMap"  // 상세 페이지
 import FoodMapView from "@/components/FoodMap/FoodMapView"  // 메인 노출 될 요약 정보
@@ -74,11 +74,11 @@ const router = createRouter({
     // component
     { 
       path : "/banner", 
-      name : "BannerView 컴포넌트", 
+      name : "BannerGuide 컴포넌트", 
       meta: {
-        tit : "BannerView" 
+        tit : "BannerGuide" 
       },
-      component : BannerView 
+      component : BannerGuide 
     },
   ]
 });

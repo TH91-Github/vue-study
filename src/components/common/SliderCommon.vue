@@ -20,7 +20,7 @@
     <template v-else>
       <!-- 기본 값 슬라이드 2 제공 -->
       <SwiperSlide
-        v-for="n in 2"
+        v-for="n in 3"
         :key="n">
         <SliderItem>
           <slot></slot>
@@ -35,7 +35,6 @@
 import { Swiper,SwiperSlide} from 'swiper/vue';
 import 'swiper/css';
 import SliderItem from '@/components/common/SliderItem';
-
 
 export default {
   components: {
@@ -58,6 +57,9 @@ export default {
     return {
       
     }
+  },
+  created() {
+    console.log(this.swiperOpt)
   },
   methods:{
     onSwiper(){

@@ -43,13 +43,16 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .cm-food {
   &__inner { 
-    width:100%;
-    max-width: $screen-m;
-    min-height: 100px;
-    margin: 0 auto;
+    @include innerOpt();
   }
+  .cm-banner{
+    &__visual{
+      height:300px;
+    }
+  }
+  
 }
 </style>

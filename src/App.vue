@@ -37,6 +37,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/assets/scss/common.scss';
+
 #app, .wrap {
   height:100%;
 }

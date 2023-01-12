@@ -70,6 +70,7 @@ export default {
   padding:8px 30px;
   background: $color-white;
   box-sizing:border-box;
+  box-shadow:0px 0px 10px rgba(0,0,.1);
   &__logo{
     flex-shrink: 0; 
     width: 100px;

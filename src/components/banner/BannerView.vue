@@ -15,7 +15,8 @@
       v-if="cmOpt.slide == 'on'"
       class="cm-banner__inner">
       <CmSlider 
-        class="cm-banner-swiper">
+        class="cm-banner-swiper"
+        v-bind="propsSwiper">
         <slot>테스트 배너</slot>
       </CmSlider>
     </div>
@@ -44,6 +45,11 @@
               <p class="cm-banner__visual-tit">{{ cmOpt.info.tit }}</p>
               <p class="cm-banner__visual-txt">{{ cmOpt.info.txt }}</p>
             </div>
+            <div 
+              v-else-if="cmOpt.imgSrc !== undefined"
+              class="cm-banner__visual-cont">
+              <img :src="cmOpt.imgSrc" alt="">
+            </div>
           </slot>
         </div>
     </div>
@@ -65,8 +71,11 @@ export default {
   },
   data() {
     return {
-      
+      propsSwiper : this.cmOpt
     }
+  },
+  created() {
+
   },
   mounted () {
   }
@@ -76,24 +85,21 @@ export default {
 .cm-banner {
   position:relative;
   width:100%;
-  max-width: $screen-m;
   &.w-full {
     width:100%;
-    max-width:1920px;
+    .cm-banner__inner { 
+      max-width:1920px;
+    }
   }
   &__inner { 
-    width:100%;
-    max-width: $screen-m;
-    min-height: 100px;
-    margin: 0 auto;
+    @include innerOpt();
   }
   &__visual {
-    $minH:rem(300px);
     display:flex;
     flex-direction: column;
     justify-content: center;
     position:relative;
-    min-height: $minH;
+    min-height: rem(100px);
     text-align:center;
     &-bg {
       position:absolute;
@@ -101,7 +107,7 @@ export default {
       top:0; 
       left:0;
       width:100%;
-      height: $minH;
+      height: 100%;
       &.img {
         overflow:hidden;
         background-position: center center;

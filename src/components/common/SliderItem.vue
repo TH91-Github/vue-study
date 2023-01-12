@@ -25,7 +25,6 @@ export default {
   height: rem(200px);
   background: $color-dark;
   &-item {
-    
     color:$color-white;
   }
 }

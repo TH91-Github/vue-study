@@ -1,0 +1,192 @@
+<template>
+  <div class="cm-info">
+    <div class="cm-info__header">
+      <p class="tit"><span class="cm-mark">컴포넌트 : BannerView</span></p>
+      <p class="txt">배경(색상,이미지) / 이미지 배너 / 슬라이드 배너 / 텍스트 포함 배너</p>
+      <p class="txt">경로 : /components/banner/BannerView</p>
+    </div>
+    <div class="cm-info__component">
+      <div class="cm-info__explanation">
+        <p class="tit">1. 기본 default (기본 배경색)</p>
+        <div class="cm-code">
+          <code>
+            <span class="component">{{codeTag.code1}}</span>
+          </code>
+        </div>
+      </div>
+      <div class="cm-info__explanation-item">
+        <CmBanner></CmBanner>
+      </div>
+    </div>
+    <div class="cm-info__component">
+      <div class="cm-info__explanation">
+        <p class="tit">2. 풀(Max:1920) 사이즈&배경색: style="배경색" 및 class full</p>
+        <div class="cm-code">
+          <code>
+            <span class="component">{{codeTag.code2}}</span>
+          </code>
+        </div>
+      </div>
+      <div class="cm-info__explanation-item">
+        <CmBanner class="w-full" style="background:#3d1797;"></CmBanner>
+      </div>
+    </div>
+    <div class="cm-info__component">
+      <div class="cm-info__explanation">
+        <p class="tit">3. bannerOpt1.bgSrc : "이미지 명.확장자" ->(/assets/img/이미지명.확장자)</p>
+        <div class="cm-code">
+          <code>
+            <span class="component">{{codeTag.code3_1}}</span>
+          </code>
+          <code>
+            <span class="data">{{codeTag.code3_2}}</span>
+          </code>
+        </div>
+      </div>
+      <div class="cm-info__explanation-item">
+        <CmBanner :cmOpt="bannerOpt3"></CmBanner>
+      </div>
+    </div>
+    <div class="cm-info__component">
+      <div class="cm-info__explanation">
+        <p class="tit">4. bannerOpt2.info.tit : 타이틀 / bannerOpt2.info.txt : 텍스트 </p>
+        <div class="cm-code">
+          <code>
+            <span class="component">{{codeTag.code4_1}}</span>
+          </code>
+          <code>
+            <span class="data">{{codeTag.code4_2}}</span>
+          </code>
+        </div>
+      </div>
+      <div class="cm-info__explanation-item">
+        <CmBanner :cmOpt="bannerOpt4"></CmBanner>
+      </div>
+    </div>
+    <div class="cm-info__component">
+      <div class="cm-info__explanation">
+        <p class="tit">5. bannerOpt3.slide="on" 및 옵션 전달</p>
+        <div class="cm-code">
+          <code>
+            <span class="component">{{codeTag.code5_1}}</span>
+          </code>
+          <code>
+            <span class="data">{{codeTag.code5_2}}</span>
+          </code>
+        </div>
+      </div>
+      <div class="cm-info__explanation-item">
+        <CmBanner :cmOpt="bannerOpt5"></CmBanner>
+      </div>
+    </div>
+  </div><!-- cm-info -->
+ 
+</template>
+
+<script>
+import CmBanner from '@/components/banner/BannerView'
+export default {
+  components: {
+    CmBanner
+  },
+  inheritAttrs: false,
+  data() {
+    return {
+      codeTag: { 
+        code1 : `<CmBanner></CmBanner>`,
+        code2 : `<CmBanner class="w-full" style="background:#3d1797;"></CmBanner>`,
+        code3_1 : `<CmBanner :cmOpt="bannerOpt1"></CmBanner>`,
+        code3_2 : `bannerOpt3:{bgSrc:"@food_map_visual.png"}`,
+        code4_1 : `<CmBanner :cmOpt="bannerOpt4"></CmBanner>`,
+        code4_2 : `bannerOpt4:{info:{tit:"배너 타이틀", txt:"배너 소개"}} `,
+        code5_1 : `<CmBanner :cmOpt="bannerOpt5"></CmBanner>`,
+        code5_2 : `bannerOpt3:{slide:"on", swiperList[{...},{...}], swiperOpt{...}}`
+      },
+      bannerOpt3 : {
+        bgSrc: "@food_map_visual.png",
+      },
+      bannerOpt4 : {
+        info: {
+          tit: "배너 타이틀",
+          txt: "배너 소개",
+        },
+      },
+      bannerOpt5 : {
+        slide : "on",
+        swiperList:[
+          { 
+            bannerSlide : {
+              info: {
+                tit: "배너 타이틀",
+                txt: "배너 소개",
+              },
+            }
+          },
+          { 
+            bannerSlide : {
+              info: {
+                tit: "배너 타이틀222",
+                txt: "배너 소개222",
+              },
+            }
+          },
+          { 
+            bannerSlide : {
+              info: {
+                tit: "배너 타이틀333",
+                txt: "배너 소개333",
+              },
+            }
+          },
+        ],
+        swiperOpt:{ // 슬라이드 컴포넌트에 옵션 전달
+          slidesPerView: 1,
+        },
+      }
+    }
+  },
+  mounted () {
+  }
+}
+</script>
+<style lang="scss">
+.cm-info {
+  .tit {
+    font-size: rem(20px);
+    font-weight:550;
+  }
+  .txt { 
+    margin-top: rem(8px);
+  }
+  &__header {
+    @include innerOpt();
+    padding-top:50px;
+    & + .cm-info__component {
+      .cm-info__explanation{
+        border-top:2px solid $color-dark;
+      }
+    }
+  }
+  &__component {
+    margin: 20px 0 0;
+  }
+  &__explanation {
+    @include innerOpt();
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px solid $sub-color2;
+    .cm-code {
+      margin-top:5px;
+    }
+    &-item {
+      margin-top: 10px;
+    }
+  }
+  .cm-dash {
+    &::after {
+      top:12px;
+    }
+  }
+}
+
+</style>
