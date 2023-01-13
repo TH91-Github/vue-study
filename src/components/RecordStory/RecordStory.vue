@@ -7,7 +7,8 @@
           <div class="cm-home__category">
             <CategorySlider
               class="cm-home__category-swiper"
-              :swiperOpt="swiperOpt" :slideList="slideList">
+              :swiperOpt="swiperOpt" 
+              :slideList="slideList">
               <template v-slot="swiper">
                 <a href="#" @click="categoryClick" class="cm-home__category-item">
                   <div class="item-head">

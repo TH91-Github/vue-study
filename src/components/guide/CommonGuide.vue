@@ -14,8 +14,8 @@
           </code>
         </div>
       </div>
-      <div class="cm-info__explanation-item">
-
+      <div class="cm-info__explanation-item max-w-center">
+        <CmBtn></CmBtn>
       </div>
     </div>
 
@@ -30,7 +30,7 @@
         <p class="tit">1. 기본 default (기본 배경색)</p>
         <div class="cm-code">
           <code>
-            <span class="component">{{codeTag.code1}}</span>
+            <span class="component">{{codeTag.code2}}</span>
           </code>
         </div>
       </div>
@@ -38,23 +38,24 @@
         <CmSlider></CmSlider>
       </div>
     </div>
-    
   </div><!-- cm-info -->
  
 </template>
 
 <script>
+import CmBtn from '@/components/common/BtnCommon'
 import CmSlider from '@/components/common/SliderCommon'
 export default {
   components: {
+    CmBtn,
     CmSlider
   },
   inheritAttrs: false,
   data() {
     return {
       codeTag: { 
-        code1 : `<CmBanner></CmBanner>`,
-        code2 : `<CmBanner class="w-full" style="background:#3d1797;"></CmBanner>`,
+        code1 : `<CmBtn></CmBtn>`,
+        code2 : `<CmSlider></CmSlider>`,
       },
       slideOpt : {
         slide : "on",

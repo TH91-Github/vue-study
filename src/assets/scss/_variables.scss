@@ -58,9 +58,37 @@ $base-transition: all .3s;
   box-sizing: border-box;
 }
 
-@mixin breakPoint() {
-  position:relative;
+
+@mixin breakpoint($point) {
+  @if $point == pc {
+      @media (max-width: $screen-xl)  {
+          @content;
+      }
+  }
+  @else if $point == wide {
+    @media (min-width: $screen-l) {
+        @content;
+    }
 }
+  @else if $point == tablet {
+      @media (max-width: $screen-m) {
+          @content;
+      }
+  }
+  @else if $point == mobile {
+      @media (max-width: $screen-s) {
+          @content;
+      }
+  }
+}
+
+@mixin breakMinMax($mq-min, $mq-max) {
+  @media (min-width: $mq-min) and (max-width: $mq-max) {
+      @content;
+  }
+}
+
+
 
 /*
 @if $point == desktop {

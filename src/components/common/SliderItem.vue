@@ -20,7 +20,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .base-slide {
   height: rem(200px);
   background: $color-dark;

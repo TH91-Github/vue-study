@@ -101,7 +101,7 @@
                 </div>
               </li>
             </ul>
-            <p class="cm-guide__list-tit"><span class="cm-mark">#ScreenSize #스크린 #사이즈 #반응형</span></p>
+            <p class="cm-guide__list-tit"><span class="cm-mark">#ScreenSize #스크린 #사이즈</span></p>
             <ul class="cm-guide__list-wrap row">
               <li class="item">
                 <div class="cm-guide__screen">
@@ -144,6 +144,49 @@
                 </div>
               </li>
             </ul>
+            <p class="cm-guide__list-tit"><span class="cm-mark">#breakpoint #@media #반응형</span></p>
+            <ul class="cm-guide__list-wrap row">
+              <li class="item">
+                <div class="cm-guide__screen">
+                  <button type="button" class="btn media-w">
+                    <span class="value">max-width:1920;</span>
+                  </button>
+                  <p class="tit">@include breakpoint(<span class="color-p3">pc</span>) {...} </p>
+                </div>
+              </li>
+              <li class="item">
+                <div class="cm-guide__screen">
+                  <button type="button" class="btn media-w">
+                    <span class="value">min-width:1680;</span>
+                  </button>
+                  <p class="tit">@include breakpoint(<span class="color-p3">wide</span>) {...} </p>
+                </div>
+              </li>
+              <li class="item">
+                <div class="cm-guide__screen">
+                  <button type="button" class="btn media-w">
+                    <span class="value">max-width:1280;</span>
+                  </button>
+                  <p class="tit">@include breakpoint(<span class="color-p3">tablet</span>) {...} </p>
+                </div>
+              </li>
+              <li class="item">
+                <div class="cm-guide__screen">
+                  <button type="button" class="btn media-w">
+                    <span class="value">max-width:768;</span>
+                  </button>
+                  <p class="tit">@include breakpoint(<span class="color-p3">mobile</span>) {...} </p>
+                </div>
+              </li>
+              <li class="item">
+                <div class="cm-guide__screen">
+                  <button type="button" class="btn media-w">
+                    <span class="value">min: width, max: width</span>
+                  </button>
+                  <p class="tit">@include breakMinMax(<span class="color-p3">min-w, max-w</span>) {...} </p>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
         <div class="cm-guide__template-cont">
@@ -153,9 +196,9 @@
             <ul class="cm-guide__list-wrap">
               <li class="cm-guide__list-link">
                 <router-link
-                  to="/common"
+                  to="/guide/CommonGuide"
                   >
-                  /components/common/uiGuide
+                  /components/guide/CommonGuide
                 </router-link>
               </li>
             </ul>
@@ -163,9 +206,9 @@
             <ul class="cm-guide__list-wrap">
               <li class="cm-guide__list-link">
                 <router-link
-                  to="/common"
+                  to="/guide/CommonGuide"
                   >
-                  /components/common/uiGuide
+                  /components/guide/CommonGuide
                 </router-link>
               </li>
             </ul>
@@ -178,9 +221,9 @@
             <ul class="cm-guide__list-wrap">
               <li class="cm-guide__list-link">
                 <router-link
-                  to="/banner"
+                  to="/guide/BannerGuide"
                   >
-                  /components/banner/BannerGuide
+                  /components/guide/BannerGuide
                 </router-link>
               </li>
             </ul>

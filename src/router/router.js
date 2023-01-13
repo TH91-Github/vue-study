@@ -1,16 +1,14 @@
 import { createWebHistory, createRouter } from "vue-router";
 import ErrorPage from "@/components/ErrorPage"
 import MainView from "@/components/MainView"
-/* 컴포넌트 리스트 */
-import guideView from "@/components/guide/guideView"
-import CommonGuide from "@/components/common/CommonGuide"
-import BannerGuide from "@/components/banner/BannerGuide"
-/* 맛 지도 */
-import FoodMap from "@/components/FoodMap/FoodMap"  // 상세 페이지
-import FoodMapView from "@/components/FoodMap/FoodMapView"  // 메인 노출 될 요약 정보
+/* 가이드 리스트 */
+import GuideView from "@/components/guide/GuideView"
+import CommonGuide from "@/components/guide/CommonGuide"
+import BannerGuide from "@/components/guide/BannerGuide"
 /* 개인 기록 */
-import RecordStory from "@/components/RecordStory/RecordStory"  // 상세 페이지
-import RecordStoryView from "@/components/RecordStory/RecordStoryView"  // 메인 노출 될 요약 정보
+import RecordStory from "@/components/RecordStory/RecordStory"
+/* 맛 지도 */
+import FoodMap from "@/components/FoodMap/FoodMap"
 
 const router = createRouter({
   history : createWebHistory(),
@@ -40,28 +38,12 @@ const router = createRouter({
       component : FoodMap
     },
     { 
-      path : "/FoodMapView", 
-      name : "FoodMap 메인 노출", 
-      meta: {
-        tit : "FoodMap" 
-      },
-      component : FoodMapView
-    },
-    { 
       path : "/RecordStory", 
       name : "RecordStory", 
       meta: {
         tit : "RecordStory" 
       },
       component : RecordStory 
-    },
-    { 
-      path : "/RecordStoryView", 
-      name : "RecordStory 메인 노출", 
-      meta: {
-        tit : "RecordStory" 
-      },
-      component : RecordStoryView 
     },
     // guide
     { 
@@ -70,26 +52,34 @@ const router = createRouter({
       meta: {
         tit : "컴포넌트 산출물" 
       },
-      component : guideView
+      component : GuideView
     },
+    // 공통 ui 가이드
     { 
-      path : "/common", 
+      path : "/guide/CommonGuide", 
       name : "공통 가이드", 
       meta: {
         tit : "공통 UI 가이드" 
       },
       component : CommonGuide
     },
-    // component 가이드
+    // 컴포넌트 별 가이드
     { 
-      path : "/banner", 
+      path : "/guide/BannerGuide", 
       name : "BannerGuide 컴포넌트", 
       meta: {
         tit : "BannerGuide" 
       },
       component : BannerGuide 
     },
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    console.log(to)
+    console.log(from)
+    console.log(savedPosition)
+    // 항상 맨 위로 스크롤
+    return { top: 0 }
+  }
 });
 router.afterEach((to) => { // title 태그  변경
   document.title = to.meta.tit;
