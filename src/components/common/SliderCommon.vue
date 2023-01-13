@@ -18,7 +18,7 @@
     <!-- 슬라이드 값 없을 시 -->
     
     <template v-else>
-      <!-- 기본 값 슬라이드 2 제공 -->
+      <!-- 기본 값 슬라이드 2 제공 : 테스트용 -->
       <SwiperSlide
         v-for="n in 3"
         :key="n">
@@ -27,8 +27,6 @@
         </SliderItem>
       </SwiperSlide>
     </template>
-
-    
   </swiper>
 </template>
 <script>

@@ -101,7 +101,7 @@
                 </div>
               </li>
             </ul>
-            <p class="cm-guide__list-tit"><span class="cm-mark">#Screen Size #스크린 #사이즈 #반응형</span></p>
+            <p class="cm-guide__list-tit"><span class="cm-mark">#ScreenSize #스크린 #사이즈 #반응형</span></p>
             <ul class="cm-guide__list-wrap row">
               <li class="item">
                 <div class="cm-guide__screen">
@@ -153,7 +153,7 @@
             <ul class="cm-guide__list-wrap">
               <li class="cm-guide__list-link">
                 <router-link
-                  to="/error"
+                  to="/common"
                   >
                   /components/common/uiGuide
                 </router-link>
@@ -163,7 +163,7 @@
             <ul class="cm-guide__list-wrap">
               <li class="cm-guide__list-link">
                 <router-link
-                  to="/error"
+                  to="/common"
                   >
                   /components/common/uiGuide
                 </router-link>
@@ -196,24 +196,6 @@
 export default {
   data() {
     return {
-      logo: {
-        name:'Logo',
-        href:'/'
-      },
-      navigations: [
-        {
-          name:'Vue',
-          href:'/vue'
-        },
-        {
-          name: '메모',
-          href: '/RecordStory'
-        },
-        {
-          name: '맛지도',
-          href: '/FoodMap'
-        }
-      ]
     }
   }
 }

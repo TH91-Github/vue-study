@@ -95,12 +95,12 @@ export default {
       codeTag: { 
         code1 : `<CmBanner></CmBanner>`,
         code2 : `<CmBanner class="w-full" style="background:#3d1797;"></CmBanner>`,
-        code3_1 : `<CmBanner :cmOpt="bannerOpt1"></CmBanner>`,
+        code3_1 : `<CmBanner :cmOpt="bannerOpt3"></CmBanner>`,
         code3_2 : `bannerOpt3:{bgSrc:"@food_map_visual.png"}`,
         code4_1 : `<CmBanner :cmOpt="bannerOpt4"></CmBanner>`,
         code4_2 : `bannerOpt4:{info:{tit:"배너 타이틀", txt:"배너 소개"}} `,
         code5_1 : `<CmBanner :cmOpt="bannerOpt5"></CmBanner>`,
-        code5_2 : `bannerOpt3:{slide:"on", swiperList[{...},{...}], swiperOpt{...}}`
+        code5_2 : `bannerOpt3:{slide:"on", swiperList[{bgSrc:'이미지경로',info:{tit:'타이틀',txt:'텍스트'}},{...}], swiperOpt{...swiper 옵션}}`
       },
       bannerOpt3 : {
         bgSrc: "@food_map_visual.png",
@@ -115,31 +115,28 @@ export default {
         slide : "on",
         swiperList:[
           { 
-            bannerSlide : {
-              info: {
-                tit: "배너 타이틀",
-                txt: "배너 소개",
-              },
-            }
+            bgSrc: "@food_map_visual.png",
+            info: {
+              tit: "1번 슬라이드 타이틀",
+              txt: "1번 소개 입니다.",
+            },
           },
           { 
-            bannerSlide : {
-              info: {
-                tit: "배너 타이틀222",
-                txt: "배너 소개222",
-              },
-            }
+            bgSrc: "@food_map_visual_2.jpg",
+            info: {
+              tit: "2번 타이틀222",
+              txt: "2번 배너 소개222",
+            },
           },
           { 
-            bannerSlide : {
-              info: {
-                tit: "배너 타이틀333",
-                txt: "배너 소개333",
-              },
-            }
+            bgSrc: "@food_map_visual.png",
+            info: {
+              tit: "3번 배너 타이틀333",
+              txt: "배너 소개333",
+            },
           },
         ],
-        swiperOpt:{ // 슬라이드 컴포넌트에 옵션 전달
+        swiperOpt:{
           slidesPerView: 1,
         },
       }
@@ -151,6 +148,7 @@ export default {
 </script>
 <style lang="scss">
 .cm-info {
+  padding-bottom:100px;
   .tit {
     font-size: rem(20px);
     font-weight:550;
@@ -187,6 +185,9 @@ export default {
       top:12px;
     }
   }
+  
+  @include breakPoint();
+ 
 }
 
 </style>

@@ -1,13 +1,13 @@
 <template>
   <div class="cm-food">
+    <!-- 배너 -->
+    <div class="cm-food__banner">
+      <CmBanner
+        class="cm-food__banner-visual w-full"
+        :cmOpt="bannerOpt">
+      </CmBanner>
+    </div>
     <div class="cm-food__inner">
-      <!-- 배너 -->
-      <div class="cm-food__banner">
-        <CmBanner
-          class="cm-food__banner-visual w-full"
-          :cmOpt="bannerOpt">
-        </CmBanner>
-      </div>
       <div class="cm-food__content">
         <!-- 슬라이드-->
         <CmSlider class="cm-food-swiper">
@@ -16,7 +16,6 @@
           </div>
         </CmSlider>
       </div>
-
     </div>
   </div>
 </template>

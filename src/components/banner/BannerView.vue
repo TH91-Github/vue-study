@@ -9,17 +9,49 @@
   <div class="cm-banner" :class="$attrs.class">
     <!-- 
       슬라이드 배너 
-      cmOpt.slide on/off 슬라이드 배너  
+      cmOpt.slide on 슬라이드 배너  
     -->
     <div 
       v-if="cmOpt.slide == 'on'"
       class="cm-banner__inner">
       <CmSlider 
         class="cm-banner-swiper"
-        v-bind="propsSwiper">
-        <slot>테스트 배너</slot>
+        :swiperOpt="bannerOpt.swiperOpt"
+        :slideList="bannerOpt.swiperList">
+        <template v-slot="swiper">
+          <div 
+            class="cm-banner__visual" 
+            style="height:100px;">
+            <!-- background 이미지 체크 / default : 기본 색상 및 색상 변경 가능 -->
+            <div 
+              v-if="swiper.bgSrc !== undefined"
+              class="cm-banner__visual-bg img"
+              :style="{backgroundImage : 'url('+require(`@/assets/img/${swiper.bgSrc}`)+')'}">
+            </div>
+            <div
+              v-else
+              class="cm-banner__visual-bg base"
+              :style="$attrs.style">
+            </div>
+            <!-- 타이틀, 텍스트 있는 경우 / default : 빈 값 -->
+            <slot>
+              <div 
+                v-if="swiper.info !== undefined"
+                class="cm-banner__visual-cont">
+                <p class="cm-banner__visual-tit">{{ swiper.info.tit }}</p>
+                <p class="cm-banner__visual-txt">{{ swiper.info.txt }}</p>
+              </div>
+              <div 
+                v-else-if="swiper.imgSrc !== undefined"
+                class="cm-banner__visual-cont">
+                <img :src="swiper.imgSrc" alt="">
+              </div>
+            </slot>
+          </div>
+        </template>
       </CmSlider>
     </div>
+    
     <!-- default 배너 -->
     <div
       v-else 
@@ -71,7 +103,7 @@ export default {
   },
   data() {
     return {
-      propsSwiper : this.cmOpt
+      bannerOpt : this.cmOpt
     }
   },
   created() {

@@ -3,6 +3,7 @@ import ErrorPage from "@/components/ErrorPage"
 import MainView from "@/components/MainView"
 /* 컴포넌트 리스트 */
 import guideView from "@/components/guide/guideView"
+import CommonGuide from "@/components/common/CommonGuide"
 import BannerGuide from "@/components/banner/BannerGuide"
 /* 맛 지도 */
 import FoodMap from "@/components/FoodMap/FoodMap"  // 상세 페이지
@@ -29,14 +30,6 @@ const router = createRouter({
         tit : "Vue th91" 
       },
       component : MainView
-    },
-    { 
-      path : "/guide", 
-      name : "가이드", 
-      meta: {
-        tit : "컴포넌트 산출물" 
-      },
-      component : guideView
     },
     { 
       path : "/FoodMap", 
@@ -70,8 +63,24 @@ const router = createRouter({
       },
       component : RecordStoryView 
     },
-
-    // component
+    // guide
+    { 
+      path : "/guide", 
+      name : "가이드", 
+      meta: {
+        tit : "컴포넌트 산출물" 
+      },
+      component : guideView
+    },
+    { 
+      path : "/common", 
+      name : "공통 가이드", 
+      meta: {
+        tit : "공통 UI 가이드" 
+      },
+      component : CommonGuide
+    },
+    // component 가이드
     { 
       path : "/banner", 
       name : "BannerGuide 컴포넌트", 

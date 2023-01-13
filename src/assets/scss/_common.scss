@@ -75,6 +75,7 @@ img {
     background: #00bb7c;
   }
 }
+
 .cm {
   &-mark{
     position:relative;
@@ -135,3 +136,42 @@ img {
     }
   }
 }
+.font {
+  &-weight {
+    font-weight:550;
+  }
+  &-underline {
+    text-decoration:underline;
+  }
+}
+.color {
+  &-p1 {
+    color: $point-color1;
+  }
+  &-p2 {
+    color: $point-color2;
+  }
+  &-p3 {
+    color: $point-color3;
+  }
+  &-p4 {
+    color: $point-color4;
+  }
+  &-p5 {
+    color: $point-color5;
+  }
+}
+.max-w {
+  &-full {
+    max-width: $screen-xl;
+    margin:0 auto;
+  }
+  &-center {
+    max-width: $screen-m;
+    margin:0 auto;
+  }
+  &-auto {
+    max-width: auto;
+  }
+}
+

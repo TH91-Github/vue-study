@@ -1,6 +1,5 @@
 <template>
   <div class="main-wrap">
-
     <!-- 맛 지도 -->
     <FoodMap></FoodMap>
   </div>
