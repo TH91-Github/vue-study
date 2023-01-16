@@ -147,7 +147,7 @@
             <p class="cm-guide__list-tit"><span class="cm-mark">#breakpoint #@media #반응형</span></p>
             <ul class="cm-guide__list-wrap row">
               <li class="item">
-                <div class="cm-guide__screen">
+                <div class="cm-guide__break">
                   <button type="button" class="btn media-w">
                     <span class="value">max-width:1920;</span>
                   </button>
@@ -155,7 +155,7 @@
                 </div>
               </li>
               <li class="item">
-                <div class="cm-guide__screen">
+                <div class="cm-guide__break">
                   <button type="button" class="btn media-w">
                     <span class="value">min-width:1680;</span>
                   </button>
@@ -163,7 +163,7 @@
                 </div>
               </li>
               <li class="item">
-                <div class="cm-guide__screen">
+                <div class="cm-guide__break">
                   <button type="button" class="btn media-w">
                     <span class="value">max-width:1280;</span>
                   </button>
@@ -171,7 +171,7 @@
                 </div>
               </li>
               <li class="item">
-                <div class="cm-guide__screen">
+                <div class="cm-guide__break">
                   <button type="button" class="btn media-w">
                     <span class="value">max-width:768;</span>
                   </button>
@@ -179,7 +179,7 @@
                 </div>
               </li>
               <li class="item">
-                <div class="cm-guide__screen">
+                <div class="cm-guide__break">
                   <button type="button" class="btn media-w">
                     <span class="value">min: width, max: width</span>
                   </button>
@@ -206,9 +206,9 @@
             <ul class="cm-guide__list-wrap">
               <li class="cm-guide__list-link">
                 <router-link
-                  to="/guide/CommonGuide"
+                  to="/guide/SlideGuide"
                   >
-                  /components/guide/CommonGuide
+                  /components/guide/SlideGuide
                 </router-link>
               </li>
             </ul>
@@ -265,13 +265,8 @@ export default {
       margin-top: rem(20px);
     }
     &-tit {
-      font-weight:550;
+      font-weight:550; 
       font-size: rem(22px);
-    }
-    &-row {
-      &-item {
-        
-      }
     }
   }
   &__list {
@@ -296,6 +291,8 @@ export default {
       &.row {
         display:flex;
         flex-wrap: wrap;
+        .item{
+        }
       }  
     }
   }
@@ -396,8 +393,20 @@ export default {
       }
     }
   }
-  
+  &__break {
+    margin: rem(10px);
+    text-align:center;
+    .media-w {
+      padding:3px;
+      border: 1px solid $sub-color2;
+    }
+  }
 }
   
+@include breakpoint(mobile){
+  .cm-guide {
+
+  }
+}
 </style>
 

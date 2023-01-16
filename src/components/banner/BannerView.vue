@@ -183,6 +183,7 @@ export default {
     &-txt {
       margin-top: rem(10px);
       color: $color-white;
+      white-space:pre-line
     }
   }
   

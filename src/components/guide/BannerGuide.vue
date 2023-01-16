@@ -77,7 +77,9 @@
         </div>
       </div>
       <div class="cm-info__explanation-item">
-        <CmBanner :cmOpt="bannerOpt5"></CmBanner>
+        <CmBanner 
+          :cmOpt="bannerOpt5">
+        </CmBanner>
       </div>
     </div>
   </div><!-- cm-info -->
@@ -101,7 +103,7 @@ export default {
         code4_1 : `<CmBanner :cmOpt="bannerOpt4"></CmBanner>`,
         code4_2 : `bannerOpt4:{info:{tit:"배너 타이틀", txt:"배너 소개"}} `,
         code5_1 : `<CmBanner :cmOpt="bannerOpt5"></CmBanner>`,
-        code5_2 : `bannerOpt3:{slide:"on", swiperList[{bgSrc:'이미지경로',info:{tit:'타이틀',txt:'텍스트'}},{...}], swiperOpt{...swiper 옵션}}`
+        code5_2 : `bannerOpt5:{slide:"on", swiperList[{bgSrc:'이미지경로',info:{tit:'타이틀',txt:'텍스트'}},{...}], swiperOpt{...swiper 옵션}}`
       },
       bannerOpt3 : {
         bgSrc: "@food_map_visual.png",

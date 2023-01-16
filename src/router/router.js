@@ -5,6 +5,7 @@ import MainView from "@/components/MainView"
 import GuideView from "@/components/guide/GuideView"
 import CommonGuide from "@/components/guide/CommonGuide"
 import BannerGuide from "@/components/guide/BannerGuide"
+import SlideGuide from "@/components/guide/SlideGuide"
 /* 개인 기록 */
 import RecordStory from "@/components/RecordStory/RecordStory"
 /* 맛 지도 */
@@ -72,11 +73,17 @@ const router = createRouter({
       },
       component : BannerGuide 
     },
+    // 컴포넌트 별 가이드
+    { 
+      path : "/guide/SlideGuide", 
+      name : "SlideGuide 컴포넌트", 
+      meta: {
+        tit : "SlideGuide" 
+      },
+      component : SlideGuide 
+    },
   ],
-  scrollBehavior(to, from, savedPosition) {
-    console.log(to)
-    console.log(from)
-    console.log(savedPosition)
+  scrollBehavior() { // to, from, savedPosition
     // 항상 맨 위로 스크롤
     return { top: 0 }
   }

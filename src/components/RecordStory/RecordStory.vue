@@ -70,7 +70,7 @@ export default {
   data() {
     return {
       slideList : [
-      {
+        {
           name:'Vue',
           mark:'ico-vue',
           tit:'Vue',

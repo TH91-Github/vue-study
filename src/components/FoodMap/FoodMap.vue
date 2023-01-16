@@ -32,8 +32,8 @@ export default {
     return {
       bannerOpt : {
         info: {
-          tit: "배너 타이틀",
-          txt: "배너 소개",
+          tit: "전국 맛을 기록하는 지도",
+          txt: "전국의 맛집을 \n 나만의 기록으로",
         },
         bgSrc: "@food_map_visual.png",
       }

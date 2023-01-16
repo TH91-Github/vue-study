@@ -57,7 +57,6 @@ export default {
     }
   },
   created() {
-    console.log(this.swiperOpt)
   },
   methods:{
     onSwiper(){
