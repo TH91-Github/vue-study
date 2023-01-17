@@ -19,7 +19,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   .btn-article {
-    
     .btn {
       padding:8px;
       border:1px solid #333;

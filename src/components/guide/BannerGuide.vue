@@ -4,7 +4,10 @@
       <p class="tit"><span class="cm-mark">컴포넌트 : BannerView</span></p>
       <p class="txt"><span class="font-bold cm-dash">배너 Type:</span> default(기본 배경색) / 풀 사이즈 / 배경색 / 이미지 배경 / 텍스트 / 슬라이드</p>
       <p class="txt"><span class="font-bold cm-dash">경로:</span> /components/banner/BannerView</p>
-      <p class="txt"><span class="font-bold cm-dash">컴포넌트 사용:</span>CmBanner - import CmBanner from '/components/banner/BannerView'</p>
+      <p class="txt">
+        <span class="font-bold cm-dash">컴포넌트 사용:</span>
+        <span class="font-bold color-p2">[CmBanner]</span> import CmBanner from '/components/banner/BannerView'
+      </p>
     </div>
     <div class="cm-info__component">
       <div class="cm-info__explanation">
@@ -77,9 +80,7 @@
         </div>
       </div>
       <div class="cm-info__explanation-item">
-        <CmBanner 
-          :cmOpt="bannerOpt5">
-        </CmBanner>
+        <CmBanner :cmOpt="bannerOpt5"></CmBanner>
       </div>
     </div>
   </div><!-- cm-info -->

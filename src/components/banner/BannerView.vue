@@ -5,7 +5,6 @@
     w-full : 최대 : 1920 / 기본 1280
     txt-left : 텍스트 왼쪽 정렬 / 기본 center
   -->
-
   <div class="cm-banner" :class="$attrs.class">
     <!-- 
       슬라이드 배너 
@@ -13,11 +12,12 @@
     -->
     <div 
       v-if="cmOpt.slide == 'on'"
-      class="cm-banner__inner">
+      class="cm-banner__inner"
+      >
       <CmSlider 
-        class="cm-banner-swiper"
-        :swiperOpt="bannerOpt.swiperOpt"
-        :slideList="bannerOpt.swiperList">
+        class="cm-banner__swiper"
+        :swiperOpt="cmOpt.swiperOpt"
+        :slideList="cmOpt.swiperList">
         <template v-slot="swiper">
           <div 
             class="cm-banner__visual" 
@@ -103,7 +103,7 @@ export default {
   },
   data() {
     return {
-      bannerOpt : this.cmOpt
+
     }
   },
   created() {

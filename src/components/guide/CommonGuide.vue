@@ -3,7 +3,11 @@
     <div class="cm-info__header">
       <p class="tit"><span class="cm-mark">Btn Button 버튼</span></p>
       <p class="txt">준비 중</p>
-      <p class="txt">경로 : /components/common/ButtonCommon</p>
+      <p class="txt"><span class="font-bold cm-dash">경로:</span> /components/common/ButtonCommon</p>
+      <p class="txt">
+        <span class="font-bold cm-dash">컴포넌트 사용:</span>
+        <span class="font-bold color-p2">[CmBtn]</span> import CmBtn from '@/components/common/BtnCommon'
+      </p>
     </div>
     <div class="cm-info__component">
       <div class="cm-info__explanation">
@@ -19,36 +23,16 @@
       </div>
     </div>
 
-    <div class="cm-info__header">
-      <p class="tit"><span class="cm-mark">Slider Swiper 슬라이드</span></p>
-      <p class="txt"><span class="font-weight color-p1">Swiper</span> : 부모(swiper) 자식(swiper-slide) 2개 컴포넌트 사용 중</p>
-      <p class="txt">준비 중</p>
-      <p class="txt">경로 : /components/common/SliderCommon</p>
-    </div>
-    <div class="cm-info__component">
-      <div class="cm-info__explanation">
-        <p class="tit">1. 기본 default (기본 배경색)</p>
-        <div class="cm-code">
-          <code>
-            <span class="component">{{codeTag.code2}}</span>
-          </code>
-        </div>
-      </div>
-      <div class="cm-info__explanation-item max-w-center">
-        <CmSlider></CmSlider>
-      </div>
-    </div>
+    
   </div><!-- cm-info -->
  
 </template>
 
 <script>
 import CmBtn from '@/components/common/BtnCommon'
-import CmSlider from '@/components/common/SliderCommon'
 export default {
   components: {
-    CmBtn,
-    CmSlider
+    CmBtn
   },
   inheritAttrs: false,
   data() {

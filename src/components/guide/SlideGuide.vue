@@ -2,9 +2,14 @@
   <div class="cm-info">
     <div class="cm-info__header">
       <p class="tit"><span class="cm-mark">Slider Swiper 슬라이드</span></p>
-      <p class="txt"><span class="font-bold color-p1">Swiper</span> : 부모(swiper) 자식(swiper-slide) 2개 컴포넌트 사용 중</p>
-      <p class="txt">슬라이드 부모(swiper, swiper-wrapper) 경로 : /components/common/SliderCommon</p>
-      <p class="txt">슬라이드 자식(swiper-slide) 경로 : /components/common/SliderItem</p>
+      <p class="txt"><span class="font-bold cm-dash color-p1">Swiper:</span> 부모(swiper) 자식(swiper-slide) 2개 컴포넌트 사용 중</p>
+      <p class="txt"><span class="font-bold cm-dash">슬라이드 부모(swiper, swiper-wrapper) 경로:</span> /components/common/SliderCommon</p>
+      <p class="txt"><span class="font-bold cm-dash">슬라이드 자식(swiper-slide) 경로:</span> /components/common/SliderItem</p>
+      <p class="txt">
+        <span class="font-bold cm-dash">컴포넌트 사용:</span>
+        <span class="font-bold color-p2">[CmSlider]</span> import CmSlider from '@/components/common/SliderCommon'
+      </p>
+
     </div>
     <div class="cm-info__component">
       <div class="cm-info__explanation">
@@ -33,8 +38,8 @@
       </div>
       <div class="cm-info__explanation-item max-w-center">
         <CmSlider
-          :swiperOpt="swiperOpt2"
-          :slideList="swiperList2">
+          :slideList="swiperList2"
+          :swiperOpt="swiperOpt2">
         </CmSlider>
       </div>
     </div>
@@ -53,9 +58,10 @@
       <div class="cm-info__explanation-item max-w-center">
         <CmSlider
           class="cm-info-swiper-3"
-          :swiperOpt="swiperOpt3"
-          :slideList="swiperList2">
-          <template v-slot="swiper">
+          :slideList="swiperList2"
+          :swiperOpt="swiperOpt3">
+          <template 
+            v-slot="swiper">
             <div class="swiper-item">
               <p class="tit">{{ swiper.info.tit}}</p>
               <p class="txt">{{ swiper.info.txt}}</p>
@@ -79,9 +85,9 @@ export default {
     return {
       codeTag: { 
         code1 : `<CmSlider></CmSlider>`,
-        code2 : `<CmSlider :swiperOpt="swiperOpt2" :slideList="swiperList2"></CmSlider>`,
-        code2_2:`swiperList2:[{slideList:{...}, slideList:{...}, ...}],swiperOpt2:{slidesPerView: 3,...}`,
-        code3 : `<CmSlider :swiperOpt="swiperOpt3" :slideList="swiperList2"><template v-slot="swiper"><p>{{ swiper.info.tit}}</p><p>{{ swiper.info.txt}}</p></template></CmSlider>`,
+        code2 : `<CmSlider :slideList="swiperList2" :swiperOpt="swiperOpt2"></CmSlider>`,
+        code2_2:`swiperList2:[{...},{...},...],swiperOpt2:{slidesPerView: 3,...}`,
+        code3 : `<CmSlider :slideList="swiperList2" :swiperOpt="swiperOpt3"><template v-slot="swiper"><p>{{ swiper.info.tit}}</p><p>{{ swiper.info.txt}}</p></template></CmSlider>`,
         code3_2 : `swiperList2:[{info:{tit:"슬라이드 타이틀",txt:"슬라이드 소개"},{info:{...},...}],swiperOpt3:{...}`,
       },
       swiperList2:[

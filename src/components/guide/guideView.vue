@@ -192,7 +192,7 @@
         <div class="cm-guide__template-cont">
           <p class="cm-guide__template-tit">Common - 공통</p>
           <div class="cm-guide__list">
-            <p class="cm-guide__list-tit"><span class="cm-mark">Btn #버튼 #Button</span></p>
+            <p class="cm-guide__list-tit"><span class="cm-mark">#Btn #버튼 #Button</span></p>
             <ul class="cm-guide__list-wrap">
               <li class="cm-guide__list-link">
                 <router-link
@@ -202,13 +202,23 @@
                 </router-link>
               </li>
             </ul>
-            <p class="cm-guide__list-tit"><span class="cm-mark">Slider(Swiper) #슬라이드</span></p>
+            <p class="cm-guide__list-tit"><span class="cm-mark">#Slider(Swiper) #슬라이드</span></p>
             <ul class="cm-guide__list-wrap">
               <li class="cm-guide__list-link">
                 <router-link
                   to="/guide/SlideGuide"
                   >
                   /components/guide/SlideGuide
+                </router-link>
+              </li>
+            </ul>
+            <p class="cm-guide__list-tit"><span class="cm-mark">#Tab #탭 #탭메뉴</span></p>
+            <ul class="cm-guide__list-wrap">
+              <li class="cm-guide__list-link">
+                <router-link
+                  to="/guide/TabGuide"
+                  >
+                  /components/guide/TabGuide
                 </router-link>
               </li>
             </ul>
