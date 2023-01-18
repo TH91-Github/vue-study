@@ -152,9 +152,9 @@ export default {
     &-item {
       display:block;
       position: relative;
-      height:rem(220px);
+      height:220px;
       padding:20px 20px 65px;
-      border-radius:rem(20px);
+      border-radius:20px;
       background: $color-white;
       box-shadow: 1px 5px 10px rgba(0,0,0,.2);  
       box-sizing: border-box;

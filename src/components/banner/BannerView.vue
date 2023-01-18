@@ -131,7 +131,7 @@ export default {
     flex-direction: column;
     justify-content: center;
     position:relative;
-    min-height: rem(100px);
+    min-height: 100px;
     text-align:center;
     &-bg {
       position:absolute;
@@ -163,7 +163,7 @@ export default {
         justify-content: center;
         background: $sub-dark;
         .desc {
-          font-size: rem(20px);
+          font-size: 20px;
           color: $color-white;
         }
         &::before {
@@ -176,12 +176,12 @@ export default {
       z-index:1;
     }
     &-tit {
-      font-size: rem(20px);
+      font-size: 20px;
       font-weight: 550;
       color: $color-white;
     }
     &-txt {
-      margin-top: rem(10px);
+      margin-top: 10px;
       color: $color-white;
       white-space:pre-line
     }

@@ -269,29 +269,29 @@ export default {
   &__template {
     .title {
       font-weight:550;
-      font-size: rem(26px);
+      font-size: 26px;
     }
     &-cont {
-      margin-top: rem(20px);
+      margin-top: 20px;
     }
     &-tit {
       font-weight:550; 
-      font-size: rem(22px);
+      font-size: 22px;
     }
   }
   &__list {
-    margin-top: rem(10px);
-    padding: 0 rem(10px);
+    margin-top: 10px;
+    padding: 0 10px;
     border-top: 2px solid $color-dark;
     .item {
 
     }
     &-tit {
-      padding: rem(10px) 0;
-      font-size: rem(18px);
+      padding: 10px 0;
+      font-size: 18px;
     }
     &-link {
-      padding: rem(5px) 0;
+      padding: 5px 0;
       border-top:1px solid $sub-color2;
       &:last-child {
         border-bottom:1px solid $sub-color2;
@@ -307,8 +307,8 @@ export default {
     }
   }
   .tit {
-    margin-top: rem(5px);
-    font-size: rem(14px);
+    margin-top: 5px;
+    font-size: 14px;
     font-weight:550;
   }
   &__font {
@@ -368,13 +368,13 @@ export default {
         background: $sub-dark;
       }
       .codes {
-        font-size: rem(12px);
+        font-size: 12px;
         color: $color-white;
       }
     }
   }
   &__screen {
-    margin: rem(10px);
+    margin: 10px;
     text-align:center;
     .screen-w {
       display:inline-block;
@@ -404,7 +404,7 @@ export default {
     }
   }
   &__break {
-    margin: rem(10px);
+    margin: 10px;
     text-align:center;
     .media-w {
       padding:3px;

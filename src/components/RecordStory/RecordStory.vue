@@ -190,9 +190,9 @@ export default {
     &-item {
       display:block;
       position: relative;
-      height:rem(220px);
+      height:220px;
       padding:20px 20px 65px;
-      border-radius:rem(20px);
+      border-radius:20px;
       background:$color-white;
       box-shadow: 1px 5px 10px rgba(0,0,0,.2);  
       box-sizing: border-box;
@@ -201,17 +201,17 @@ export default {
       &-head {
         &-tit { 
           display:block;
-          margin-top:rem(10px);
-          font-size: rem(22px);
+          margin-top:10px;
+          font-size: 22px;
           font-weight:550;
-          line-height: rem(26px);
+          line-height:26px;
           @include ellipsis(1);
         }
         &-txt {
-          margin-top:rem(5px);
-          font-size: rem(18px);
-          line-height: rem(22px);
-          @include ellipsis(2, rem(22px));
+          margin-top:5px;
+          font-size:18px;
+          line-height:22px;
+          @include ellipsis(2, 22px);
         }
       }
       &-info {
@@ -219,8 +219,8 @@ export default {
           position: absolute;
           left:20px;
           bottom:40px;
-          font-size: rem(14px);
-          line-height: rem(18px);
+          font-size: 14px;
+          line-height: 18px;
           @include ellipsis(1);
         }
         &-update {
@@ -228,9 +228,9 @@ export default {
           width:100%;
           left:0px;
           bottom:20px;
-          padding: 0 20px;
-          font-size: rem(12px);
-          line-height: rem(16px);
+          padding:0 20px;
+          font-size:12px;
+          line-height:16px;
           @include ellipsis(1);
           box-sizing: border-box;
         }

@@ -138,11 +138,11 @@ export default {
 <style lang="scss">
 .cm-info {
   .tit {
-    font-size: rem(20px);
+    font-size: 20px;
     font-weight:550;
   }
   .txt { 
-    margin-top: rem(8px);
+    margin-top: 8px;
   }
   &__header {
     @include innerOpt();

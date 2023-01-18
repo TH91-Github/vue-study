@@ -41,38 +41,6 @@ export default {
         code1 : `<CmBtn></CmBtn>`,
         code2 : `<CmSlider></CmSlider>`,
       },
-      slideOpt : {
-        slide : "on",
-        swiperList:[
-          { 
-            bannerSlide : {
-              info: {
-                tit: "배너 타이틀",
-                txt: "배너 소개",
-              },
-            }
-          },
-          { 
-            bannerSlide : {
-              info: {
-                tit: "배너 타이틀222",
-                txt: "배너 소개222",
-              },
-            }
-          },
-          { 
-            bannerSlide : {
-              info: {
-                tit: "배너 타이틀333",
-                txt: "배너 소개333",
-              },
-            }
-          },
-        ],
-        swiperOpt:{ // 슬라이드 컴포넌트에 옵션 전달
-          slidesPerView: 1,
-        },
-      }
     }
   },
   mounted () {
@@ -82,11 +50,11 @@ export default {
 <style lang="scss">
 .cm-info {
   .tit {
-    font-size: rem(20px);
+    font-size: 20px;
     font-weight:550;
   }
   .txt { 
-    margin-top: rem(8px);
+    margin-top: 8px;
   }
   &__header {
     @include innerOpt();

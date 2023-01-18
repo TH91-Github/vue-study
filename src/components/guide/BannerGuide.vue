@@ -154,11 +154,11 @@ export default {
 .cm-info {
   padding-bottom:100px;
   .tit {
-    font-size: rem(20px);
+    font-size: 20px;
     font-weight:550;
   }
   .txt { 
-    margin-top: rem(8px);
+    margin-top: 8px;
   }
   &__header {
     @include innerOpt();
