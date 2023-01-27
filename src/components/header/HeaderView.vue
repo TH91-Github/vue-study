@@ -42,7 +42,7 @@ export default {
       navigations: [
         {
           name:'가이드',
-          href:'/guide'
+          href:'/guide/GuideView'
         },
         {
           name: '메모',

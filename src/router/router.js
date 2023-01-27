@@ -47,17 +47,15 @@ const router = createRouter({
       },
       component : RecordStory 
     },
-    // guide
-    { 
-      path : "/guide", 
+    { // guide
+      path : "/guide/GuideView", 
       name : "가이드", 
       meta: {
         tit : "컴포넌트 산출물" 
       },
       component : GuideView
     },
-    // 공통 ui 가이드
-    { 
+    {  // 공통 ui 가이드
       path : "/guide/CommonGuide", 
       name : "공통 가이드", 
       meta: {
@@ -65,8 +63,7 @@ const router = createRouter({
       },
       component : CommonGuide
     },
-    // 컴포넌트 별 가이드
-    { 
+    {  // 컴포넌트 별 가이드
       path : "/guide/BannerGuide", 
       name : "BannerGuide 컴포넌트", 
       meta: {
