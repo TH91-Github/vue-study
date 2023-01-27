@@ -2,7 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import ErrorPage from "@/components/ErrorPage"
 import MainView from "@/components/MainView"
 /* 가이드 리스트 */
-import GuideView from "@/components/guide/GuideView"
+import GuideList from "@/components/guide/GuideList"
 import CommonGuide from "@/components/guide/CommonGuide"
 import BannerGuide from "@/components/guide/BannerGuide"
 import SlideGuide from "@/components/guide/SlideGuide"
@@ -48,12 +48,12 @@ const router = createRouter({
       component : RecordStory 
     },
     {  // guide
-      path : "/guide/GuideView", 
+      path : "/guide", 
       name : "Guide 컴포넌트", 
       meta: {
-        tit : "GuideView" 
+        tit : "GuideList" 
       },
-      component : GuideView 
+      component : GuideList 
     },
     {  // 공통 ui 가이드
       path : "/guide/CommonGuide", 
