@@ -11,6 +11,7 @@
     <div class="cm-info__component">
       <div class="cm-info__explanation">
         <p class="tit">1. 기본 default / class 전달 :$attrs.class 사용 중 </p>
+        <p class="txt">기본 css 적용</p>
         <div class="cm-code">
           <code>
             <span class="component">{{codeTag.code1}}</span>
@@ -23,7 +24,8 @@
     </div>
     <div class="cm-info__component">
       <div class="cm-info__explanation">
-        <p class="tit">1. 기본 default / class 전달 :$attrs.class 사용 중 </p>
+        <p class="tit">2. 탭 버튼, 리스트 전달 </p>
+        <p class="txt">기본 css X / 필요 디자인에 따라 입력</p>
         <div class="cm-code">
           <code>
             <span class="component">{{codeTag.code2}}</span>
@@ -34,14 +36,14 @@
         </div>
       </div>
       <div class="cm-info__explanation-item max-w-center">
-        <CmTab></CmTab>
+        <CmTab 
+          class="cm-info__tab-test"
+          :cmOpt="tabList">
+        </CmTab>
       </div>
     </div>
-    
-
-
   </div><!-- cm-info -->
- 
+
 </template>
 
 <script>
@@ -55,31 +57,33 @@ export default {
     return {
       codeTag: { 
         code1 : `<CmTab></CmTab>`,
-        code2 : `<CmSlider :tabList="tabList"`,
-        code2_2 : `tabList:[{menu:{tit:"tab1"},info:{tit:{탭 정보 data}}}]`,
+        code2 : `<CmSlider :cmOpt="tabList"></CmTab>`,
+        code2_2 : `tabList:[{tabs:{tit:"tab1"},cont:{tit:{탭 정보 data}}}]`,
       },
       tabList:[
         { 
-          menu: {
+          // 탭 버튼 
+          tabs: { 
             tit: "Tab1",
           },
-          info: {
+          // 탭 컨텐츠
+          cont: { 
             tit: "탭 정보 입니다.",
           }
         },
         { 
-          menu: {
+          tabs: {
             tit: "Tab2",
           },
-          info: {
+          cont: {
             tit: "탭 정보 입니다22",
           }
         },
         { 
-          menu: {
+          tabs: {
             tit: "Tab3",
           },
-          info: {
+          cont: {
             tit: "탭 정보 입니다.3333",
           }
         },
@@ -93,11 +97,11 @@ export default {
 <style lang="scss">
 .cm-info {
   .tit {
-    font-size: rem(20px);
+    font-size: 20px;
     font-weight:550;
   }
   .txt { 
-    margin-top: rem(8px);
+    margin-top: 8px;
   }
   &__header {
     @include innerOpt();
@@ -128,7 +132,37 @@ export default {
       top:12px;
     }
   }
-  
+  &__tab-test {
+    position:relative;
+    .cm-tab {
+      &__menu {
+        &-tabs {
+          .btn {
+            padding: 5px 10px;
+            color:$color-white;
+            border:1px solid $color-dark;
+            background:$color-dark;
+            box-sizing:border-box;
+          }
+          &.active {
+            .btn {
+              font-weight: 550;
+              color:$point-color2;
+              background:$color-white;
+            }
+          }
+        }
+      }
+      &__info {
+        padding: 30px;
+        border:1px solid $point-color1;
+        &-item {
+          padding:30px;
+          border: 1px solid $point-color2;
+        }
+      }
+    }
+  }
 }
 
 </style>
