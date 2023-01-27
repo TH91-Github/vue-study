@@ -40,10 +40,10 @@ export default {
         href:'/'
       },
       navigations: [
-        // {
-        //   name:'가이드',
-        //   href:'/guide/GuideView'
-        // },
+        {
+          name:'가이드',
+          href:'/guide'
+        },
         {
           name: '메모',
           href: '/RecordStory'

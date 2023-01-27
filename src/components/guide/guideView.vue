@@ -283,9 +283,6 @@ export default {
     margin-top: 10px;
     padding: 0 10px;
     border-top: 2px solid $color-dark;
-    .item {
-
-    }
     &-tit {
       padding: 10px 0;
       font-size: 18px;
@@ -301,8 +298,6 @@ export default {
       &.row {
         display:flex;
         flex-wrap: wrap;
-        .item{
-        }
       }  
     }
   }
@@ -410,12 +405,6 @@ export default {
       padding:3px;
       border: 1px solid $sub-color2;
     }
-  }
-}
-  
-@include breakpoint(mobile){
-  .cm-guide {
-
   }
 }
 </style>
