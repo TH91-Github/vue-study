@@ -100,8 +100,8 @@ export default {
   inheritAttrs: false,
   props :{
     cmOpt : {
-      type: String,
-      default:''
+      type: Object,
+      default: () => ({})
     },
   },
   data() {

@@ -45,12 +45,12 @@ export default {
   inheritAttrs: false,
   props:{
     swiperOpt : {
-      type: String,
-      default:''
+      type: Object,
+      default: () => ({})
     },
     slideList : {
-      type: String,
-      default:''
+      type: Object,
+      default: () => ({})
     },
   }, 
   data() {

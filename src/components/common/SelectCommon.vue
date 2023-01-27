@@ -74,8 +74,8 @@ export default {
   inheritAttrs: false,
   props:{
     selectOpt : {
-      type: String,
-      default:''
+      type: Object,
+      default: () => ({})
     },
   }, 
   data () {
