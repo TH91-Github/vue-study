@@ -11,16 +11,8 @@
       <div class="cm-food__content">
         <!-- 검색 -->
         <div class="cm-food__search">
-          <div class="cm-food__search-section">
-            <input type="text" >
-          </div>
-          <div class="cm-food__search-section">
-            <CmSelect></CmSelect>
-          </div>
-          <div class="cm-food__search-section">
-            <button type="button">test</button>
-          </div>
-        </div>
+          <CmSearch></CmSearch>
+        </div>        
         <!-- 슬라이드-->
         <div class="cm-food__slider">
           <CmSlider class="cm-food__slider-wrap">
@@ -46,12 +38,12 @@
 
 <script>
 import CmBanner from '@/components/banner/BannerView'
-import CmSelect from '@/components/common/SelectCommon.vue'
+import CmSearch from '@/components/common/SearchCommon'
 import CmSlider from '@/components/common//SliderCommon'
 export default {
   components: {
     CmBanner,
-    CmSelect,
+    CmSearch,
     CmSlider
   },
   data() {
@@ -77,9 +69,6 @@ export default {
     &__visual{
       height:300px;
     }
-  }
-  &__search {
-    display:flex;
   }
 
   

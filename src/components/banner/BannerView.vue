@@ -164,10 +164,10 @@ export default {
         display:flex;
         flex-direction: column;
         justify-content: center;
-        background: $sub-dark;
+        background: $c-sub-dark;
         .desc {
           font-size: 20px;
-          color: $color-white;
+          color: $c-white;
         }
         &::before {
           display:none;
@@ -181,11 +181,11 @@ export default {
     &-tit {
       font-size: 20px;
       font-weight: 550;
-      color: $color-white;
+      color: $c-white;
     }
     &-txt {
       margin-top: 10px;
-      color: $color-white;
+      color: $c-white;
       white-space:pre-line
     }
   }
@@ -199,10 +199,10 @@ export default {
   &.bg-white {
     .cm-banner__visual {
       &-tit {
-        color: $color-dark;
+        color: $c-dark;
       }
       &-txt{
-        color: $color-dark;
+        color: $c-dark;
       }
     }
   }

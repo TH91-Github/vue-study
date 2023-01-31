@@ -149,7 +149,7 @@ export default {
     padding-top:50px;
     & + .cm-info__component {
       .cm-info__explanation{
-        border-top:2px solid $color-dark;
+        border-top:2px solid $c-dark;
       }
     }
   }
@@ -160,7 +160,7 @@ export default {
     @include innerOpt();
     margin-top:10px;
     padding-top:10px;
-    border-top:1px solid $sub-color2;
+    border-top:1px solid $c-sub2;
     .cm-code {
       margin-top:5px;
     }
@@ -176,8 +176,8 @@ export default {
   &-swiper-3{
     .swiper-item{
       min-height:100px;
-      border:1px solid $point-color1;
-      color:$color-dark;
+      border:1px solid $c-point1;
+      color:$c-dark;
       box-sizing:border-box;
     }
   }

@@ -108,7 +108,7 @@ export default {
     padding-top:50px;
     & + .cm-info__component {
       .cm-info__explanation{
-        border-top:2px solid $color-dark;
+        border-top:2px solid $c-dark;
       }
     }
   }
@@ -119,7 +119,7 @@ export default {
     @include innerOpt();
     margin-top:10px;
     padding-top:10px;
-    border-top:1px solid $sub-color2;
+    border-top:1px solid $c-sub2;
     .cm-code {
       margin-top:5px;
     }
@@ -139,26 +139,26 @@ export default {
         &-tabs {
           .btn {
             padding: 5px 10px;
-            color:$color-white;
-            border:1px solid $color-dark;
-            background:$color-dark;
+            color:$c-white;
+            border:1px solid $c-dark;
+            background:$c-dark;
             box-sizing:border-box;
           }
           &.active {
             .btn {
               font-weight: 550;
-              color:$point-color2;
-              background:$color-white;
+              color:$c-point2;
+              background:$c-white;
             }
           }
         }
       }
       &__info {
         padding: 30px;
-        border:1px solid $point-color1;
+        border:1px solid $c-point1;
         &-item {
           padding:30px;
-          border: 1px solid $point-color2;
+          border: 1px solid $c-point2;
         }
       }
     }

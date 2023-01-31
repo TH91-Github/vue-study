@@ -22,7 +22,7 @@ export default {
     .btn {
       padding:8px;
       border:1px solid #333;
-      background:$color-white;
+      background:$c-white;
       text-align:center;
     }
   }

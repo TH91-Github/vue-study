@@ -68,7 +68,7 @@ export default {
   left:0;
   width:100%;
   padding:8px 30px;
-  background: $color-white;
+  background: $c-white;
   box-sizing:border-box;
   box-shadow:0px 0px 10px rgba(0,0,.1);
   &__logo{
@@ -99,10 +99,10 @@ export default {
       font-weight: 550;
       transition: $base-transition;
       &:hover, &.focus {
-        color: $point-color1;
+        color: $c-point1;
       }
       &.active {
-        color: $point-color2;
+        color: $c-point2;
       }
     }
   }

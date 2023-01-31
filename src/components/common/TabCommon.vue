@@ -107,7 +107,7 @@ export default {
       .btn {
         display:inline-block;
         padding: 8px 10px;
-        border:1px solid $sub-color1;
+        border:1px solid $c-sub1;
       }
     }
     .cm-tab__info {

@@ -22,82 +22,82 @@
             <ul class="cm-guide__list-wrap row">
               <li class="item">
                 <div class="cm-guide__color">
-                  <button type="button" class="btn point-color1">
+                  <button type="button" class="btn c-point1">
                     <span class="codes">#3d1797</span>
                   </button>
-                  <p class="tit">$point-color1</p>
+                  <p class="tit">$c-point1</p>
                 </div>
               </li>
               <li class="item">
                 <div class="cm-guide__color">
-                  <button type="button" class="btn point-color2">
+                  <button type="button" class="btn c-point2">
                     <span class="codes">#1c7947</span>
                   </button>
-                  <p class="tit">$point-color2</p>
+                  <p class="tit">$c-point2</p>
                 </div>
               </li>
               <li class="item">
                 <div class="cm-guide__color">
-                  <button type="button" class="btn point-color3">
+                  <button type="button" class="btn c-point3">
                     <span class="codes">#f24c4c</span>
                   </button>
-                  <p class="tit">$point-color3</p>
+                  <p class="tit">$c-point3</p>
                 </div>
               </li>
               <li class="item">
                 <div class="cm-guide__color">
-                  <button type="button" class="btn point-color4">
+                  <button type="button" class="btn c-point4">
                     <span class="codes">#fee500</span>
                   </button>
-                  <p class="tit">$point-color4</p>
+                  <p class="tit">$c-point4</p>
                 </div>
               </li>
               <li class="item">
                 <div class="cm-guide__color">
-                  <button type="button" class="btn point-color5">
+                  <button type="button" class="btn c-point5">
                     <span class="codes">#6dcfdc</span>
                   </button>
-                  <p class="tit">$point-color5</p>
+                  <p class="tit">$c-point5</p>
                 </div>
               </li>
               <li class="item">
                 <div class="cm-guide__color">
-                  <button type="button" class="btn color-dark">
+                  <button type="button" class="btn c-dark">
                     <span class="codes">#262626</span>
                   </button>
-                  <p class="tit">$color-dark</p>
+                  <p class="tit">$c-dark</p>
                 </div>
               </li>
               <li class="item">
                 <div class="cm-guide__color">
-                  <button type="button" class="btn color-white">
+                  <button type="button" class="btn c-white">
                     <span class="codes">#fff</span>
                   </button>
-                  <p class="tit">$color-white</p>
+                  <p class="tit">$c-white</p>
                 </div>
               </li>
               <li class="item">
                 <div class="cm-guide__color">
-                  <button type="button" class="btn sub-color1">
+                  <button type="button" class="btn c-sub1">
                     <span class="codes">#7f7f7f</span>
                   </button>
-                  <p class="tit">$sub-color1</p>
+                  <p class="tit">$c-sub1</p>
                 </div>
               </li>
               <li class="item">
                 <div class="cm-guide__color">
-                  <button type="button" class="btn sub-color2">
+                  <button type="button" class="btn c-sub2">
                     <span class="codes">#b4b4b4</span>
                   </button>
-                  <p class="tit">$sub-color2</p>
+                  <p class="tit">$c-sub2</p>
                 </div>
               </li>
               <li class="item">
                 <div class="cm-guide__color">
-                  <button type="button" class="btn sub-dark">
+                  <button type="button" class="btn c-sub-dark">
                     <span class="codes">#666</span>
                   </button>
-                  <p class="tit">$sub-dark</p>
+                  <p class="tit">$c-sub-dark</p>
                 </div>
               </li>
             </ul>
@@ -288,16 +288,16 @@ export default {
   &__list {
     margin-top: 10px;
     padding: 0 10px;
-    border-top: 2px solid $color-dark;
+    border-top: 2px solid $c-dark;
     &-tit {
       padding: 10px 0;
       font-size: 18px;
     }
     &-link {
       padding: 5px 0;
-      border-top:1px solid $sub-color2;
+      border-top:1px solid $c-sub2;
       &:last-child {
-        border-bottom:1px solid $sub-color2;
+        border-bottom:1px solid $c-sub2;
       }
     }
     &-wrap{
@@ -316,11 +316,11 @@ export default {
     text-align:center;
     .font-family{
       padding:3px;
-      border: 1px solid $sub-color2;
+      border: 1px solid $c-sub2;
       span {
         display:block;
         &.val {
-          color:$point-color3;
+          color:$c-point3;
         }
       }
     }
@@ -333,44 +333,44 @@ export default {
       width:60px;
       height:60px;
       border-radius:5px;
-      border:1px solid $sub-dark;
+      border:1px solid $c-sub-dark;
       text-align:center;
       &.point-color1{ 
-        background:$point-color1;
+        background:$c-point1;
       }
       &.point-color2{ 
-        background:$point-color2;
+        background:$c-point2;
       }
       &.point-color3{ 
-        background:$point-color3;
+        background:$c-point3;
       }
       &.point-color4{ 
-        background:$point-color4;
+        background:$c-point4;
       }
       &.point-color5{ 
-        background:$point-color5;
+        background:$c-point5;
       }
       &.color-dark {
-        background : $color-dark;
+        background : $c-dark;
       }
       &.color-white {
-        background : $color-white;
+        background : $c-white;
         .codes{
-          color: $color-dark;
+          color: $c-dark;
         }
       }
       &.sub-color1 {
-        background: $sub-color1;
+        background: $c-sub1;
       }
       &.sub-color2 {
-        background: $sub-color2;
+        background: $c-sub2;
       }
       &.sub-dark {
-        background: $sub-dark;
+        background: $c-sub-dark;
       }
       .codes {
         font-size: 12px;
-        color: $color-white;
+        color: $c-white;
       }
     }
   }
@@ -382,8 +382,8 @@ export default {
       position:relative;
       width:60px;
       height:60px;
-      border-left:1px solid $sub-color2;
-      border-right:1px solid $sub-color2;
+      border-left:1px solid $c-sub2;
+      border-right:1px solid $c-sub2;
       text-align:center;
       &::before {
         display:block;
@@ -392,7 +392,7 @@ export default {
         left:0;
         width:100%;
         height:1px; 
-        background: $color-dark;
+        background: $c-dark;
         transform: translateY(-50%);
         content:"";
       }
@@ -409,7 +409,7 @@ export default {
     text-align:center;
     .media-w {
       padding:3px;
-      border: 1px solid $sub-color2;
+      border: 1px solid $c-sub2;
     }
   }
 }

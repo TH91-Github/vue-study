@@ -5,8 +5,7 @@ body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, p, table, th, td, form, fi
   margin: 0;
   padding: 0;
   font-family:$font-suit;
-  color:$color-dark;
-  
+  color:$c-dark;
   -webkit-text-size-adjust:none;
 }
 html,body {
@@ -25,7 +24,6 @@ input, button, select {
 }
 button {
   border: 0;
-  outline:0;
   background: none;
   cursor: pointer;
   &:disabled {
@@ -39,7 +37,7 @@ ul, ol {
   list-style: none;
 }
 a {
-  color:$color-dark;
+  color:$c-dark;
   text-decoration: none;
 }
 a:focus{
@@ -69,7 +67,7 @@ img {
     background:#f8e01f;
   }
   &-guide {
-    background: $point-color1;
+    background: $c-point1;
   }
   &-vue {
     background: #00bb7c;
@@ -90,11 +88,11 @@ img {
       content:""
     }
     &::before {
-      background: $point-color2;
+      background: $c-point2;
       transform: rotate(90deg);
     }
     &::after {
-      background: $point-color1;
+      background: $c-point1;
       transform:translateY(-50%);
     }
   }
@@ -107,14 +105,14 @@ img {
       left:0;
       width:5px;
       height:1px;
-      background: $sub-color1;
+      background: $c-sub1;
       content:"";
     }
   }
   &-code {
     width:100%; 
     padding:10px; 
-    background: $color-dark;
+    background: $c-dark;
     border-radius:5px;
     box-sizing: border-box;
     code {
@@ -122,17 +120,17 @@ img {
       & + code {
         margin-top:5px;
         padding-top:5px;
-        border-top: 1px solid $sub-color2;
+        border-top: 1px solid $c-sub2;
       }
     }
     span{ 
       display:inline-block;
     }
     .component {
-      color: $point-color4;
+      color: $c-point4;
     }
     .data {
-      color: $point-color5;
+      color: $c-point5;
     }
   }
 }
@@ -146,19 +144,19 @@ img {
 }
 .color {
   &-p1 {
-    color: $point-color1;
+    color: $c-point1;
   }
   &-p2 {
-    color: $point-color2;
+    color: $c-point2;
   }
   &-p3 {
-    color: $point-color3;
+    color: $c-point3;
   }
   &-p4 {
-    color: $point-color4;
+    color: $c-point4;
   }
   &-p5 {
-    color: $point-color5;
+    color: $c-point5;
   }
 }
 .max-w {

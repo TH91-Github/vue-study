@@ -23,9 +23,9 @@ export default {
 <style scoped lang="scss">
 .base-slide {
   height: 200px;
-  background: $color-dark;
+  background: $c-dark;
   &-item {
-    color:$color-white;
+    color:$c-white;
   }
 }
 </style>
