@@ -335,37 +335,37 @@ export default {
       border-radius:5px;
       border:1px solid $c-sub-dark;
       text-align:center;
-      &.point-color1{ 
+      &.c-point1{ 
         background:$c-point1;
       }
-      &.point-color2{ 
+      &.c-point2{ 
         background:$c-point2;
       }
-      &.point-color3{ 
+      &.c-point3{ 
         background:$c-point3;
       }
-      &.point-color4{ 
+      &.c-point4{ 
         background:$c-point4;
       }
-      &.point-color5{ 
+      &.c-point5{ 
         background:$c-point5;
       }
-      &.color-dark {
+      &.c-dark {
         background : $c-dark;
       }
-      &.color-white {
+      &.c-white {
         background : $c-white;
         .codes{
           color: $c-dark;
         }
       }
-      &.sub-color1 {
+      &.c-sub1 {
         background: $c-sub1;
       }
-      &.sub-color2 {
+      &.c-sub2 {
         background: $c-sub2;
       }
-      &.sub-dark {
+      &.c-sub-dark {
         background: $c-sub-dark;
       }
       .codes {
