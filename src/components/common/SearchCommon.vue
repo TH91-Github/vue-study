@@ -1,6 +1,5 @@
 <template>
-  <div 
-    class="cm-search">
+  <div class="cm-search">
     <div class="cm-search__inner">
       <div 
         class="cm-search__input cm-search__section"
@@ -11,7 +10,7 @@
           placeholder="검색어 입력"
           :value="searchValue"
           @input="searchValue = $event.target.value"
-          @keydown.up.down="inputArrow"
+          @keydown.up.down.prevent="inputArrow"
           @keypress.enter="searchAction" 
           @focus="inputFocus"/>
         <div 
@@ -32,9 +31,15 @@
           </ul>
         </div>
       </div>
-      <div class="cm-search__select cm-search__section">
+
+      <!-- 범주 선택이 필요할 경우 -->
+      <div 
+        class="cm-search__select cm-search__section"
+        v-if="false">
         <CmSelect></CmSelect>
       </div>
+
+      <!-- 검색 -->
       <div class="cm-search__btn cm-search__section">
         <button 
           type="button" 
@@ -63,10 +68,12 @@
 <script>
 import CmSelect from '@/components/common/SelectCommon'
 
+
 export default {
   components : {
     CmSelect
   },
+  el: document.querySelector('.cm-search'),
   inheritAttrs: false,
   props:{
     cmOpt : {
@@ -88,10 +95,20 @@ export default {
           "default": "2023",
         },
         {
+          "name": "논현각22",
+          "default": "2023",
+        },
+        {
+          "name": "논현각33",
+          "default": "2023",
+        },
+        {
           "name": "웨더",
           "default": "2023",
         },
       ],
+      eInputWrap:'',
+      eKeyListWrap:'',
     }
   },
   computed : {
@@ -105,7 +122,11 @@ export default {
         return [];
       }
     },
-  },  
+  },
+  mounted () { 
+    this.eInputWrap = this.$el.querySelector('.cm-search__input');
+    this.eKeyListWrap = this.$el.querySelector('.cm-search__input-key-list');
+  },
   methods: {
     inputFocus() {// 자동완성 목록 on
       this.searchOnOff = true;
@@ -113,32 +134,38 @@ export default {
     focusOut(){ // input+목록에 포커스가 없을 시 on 해제 
       this.searchOnOff = false;
     }, 
-    inputArrow(event){ // input  ↑ ↓ 방향키 제어
-      const _this = event.target;
-
-      if(event.keyCode == 40) {
-        console.log(_this)
+    inputArrow(event){ // input ↑ ↓ 방향키 제어
+      if(this.filterRes.length > 0){ // 목록이 있을 시 
+        if(event.keyCode == 38){ // ↑ 리스트 마지막으로
+          const lastKey = this.eKeyListWrap.querySelectorAll('li')[this.filterRes.length-1];
+          lastKey.querySelector('button').focus();
+        }else if(event.keyCode == 40) { // ↓ 리스트 첫 번째
+          const firstKey = this.eKeyListWrap.querySelectorAll('li')[0];
+          firstKey.querySelector('button').focus();
+        }
       }
-
-      /*
-        input 에서 위 아래 방향키 누를 시 목록이 있어야 하며 없을 시 focus 이동 안됨.
-        목록이 있다면
-        up 시 마지막 목록으로 focus
-        down 시 첫번째 목록으로 focus
-
-      */
-    },  
-    keyListArrow(){ // 목록 ↑ ↓ 방향키 제어
-      
-      /*
-        첫 번째 목록에서 up 시 인풋으로 이동 
-        마지막 목록에서 down 시 인풋으로 이동
-      */
     },
-    searchAction(event){ // 엔터 & 클릭
-      const _this = event.target;
-      const searchParent = _this.closest('.cm-search');
-      const searchInput = searchParent.querySelector('.cm-search__input-key');
+    keyListArrow(event){ // 목록 ↑ ↓ 방향키 제어
+      const keyLi = event.target.parentNode;
+      const prevLi = keyLi.previousElementSibling;
+      const nextLi = keyLi.nextElementSibling;
+
+      if(event.keyCode == 38){ // ↑ 첫 번째에서는 input으로
+        if(prevLi !== null){
+          prevLi.querySelector('button').focus();
+        }else{
+          this.eInputWrap.querySelector('input').focus();
+        }
+      }else if(event.keyCode == 40) { // ↓ 마지막에서는 input으로
+        if(nextLi !== null){
+          nextLi.querySelector('button').focus();
+        }else{
+          this.eInputWrap.querySelector('input').focus();
+        }
+      }
+    },
+    searchAction(){ // 엔터 & 클릭
+      const searchInput = this.$el.querySelector('.cm-search__input-key');
       if(searchInput.value == null || searchInput.value == "undefined" || searchInput.value == ""){
         alert("입력된 검색어가 없습니다.")
       }else if(this.filterRes.length > 0){
@@ -186,6 +213,7 @@ export default {
       border-bottom:1px solid $c-dark;
       background: $c-white;
       &-list {
+        overflow:hidden;
         position:absolute;
         top:100%;
         z-index:50;
