@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import commonJs from "@/assets/js/common.js"
 import HeaderView from '@/components/header/HeaderView'
 
 export default {
@@ -21,7 +20,6 @@ export default {
     }
   },
   mounted (){
-    commonJs()
   },
   methods: {
     
