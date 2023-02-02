@@ -18,7 +18,7 @@
           v-if="searchData.length">
           <ul>
             <li 
-              v-for="item in filterRes"
+              v-for="item in searchData"
               :key="item">
               <button 
                 type="button"
@@ -91,22 +91,8 @@ export default {
       eKeyListWrap:'',
     }
   },
-  computed : {
-    filterRes() { // 자동완성 목록 
-      if(this.searchValue){
-        return this.searchData.filter((item)=> {
-          return item.name.toLowerCase().includes(this.searchValue.toLowerCase());
-          // 여기서 카테고리에 따른 검색 값 바뀔 수 있게 
-        })
-      }else{
-        return [];
-      }
-    },
-  },
-  mounted () { 
-    this.searchData = this.cmData;
+  mounted () {
     this.eInputWrap = this.$el.querySelector('.cm-search__input');
-    this.eKeyListWrap = this.$el.querySelector('.cm-search__input-key-list');
   },
   methods: {
     inputFocus() {// 자동완성 목록 on
@@ -116,9 +102,10 @@ export default {
       this.searchOnOff = false;
     }, 
     inputArrow(event){ // input ↑ ↓ 방향키 제어
-      if(this.filterRes.length > 0){ // 목록이 있을 시 
+      this.eKeyListWrap = this.$el.querySelector('.cm-search__input-key-list');
+      if(this.searchData.length > 0){ // 목록이 있을 시 
         if(event.keyCode == 38){ // ↑ 리스트 마지막으로
-          const lastKey = this.eKeyListWrap.querySelectorAll('li')[this.filterRes.length-1];
+          const lastKey = this.eKeyListWrap.querySelectorAll('li')[this.searchData.length-1];
           lastKey.querySelector('button').focus();
         }else if(event.keyCode == 40) { // ↓ 리스트 첫 번째
           const firstKey = this.eKeyListWrap.querySelectorAll('li')[0];
@@ -148,8 +135,9 @@ export default {
       const searchInput = this.$el.querySelector('.cm-search__input-key');
       if(searchInput.value == null || searchInput.value == "undefined" || searchInput.value == ""){
         alert("입력된 검색어가 없습니다.")
-      }else if(this.filterRes.length > 0){
+      }else if(this.searchData.length > 0){
         console.log("값 노출") // 부모로 값 전달 list에 뿌려야 하기에
+        this.postData(); // 데이터 부모에게 전달 $emit
         this.searchOnOff = false;
       }else{
         console.log("검색된 값이 없습니다.")
@@ -158,17 +146,34 @@ export default {
     keywordListClick(event){ // 자동 완성 클릭 시 
       this.searchValue = event.target.innerText;
       this.eInputWrap.querySelector('input').focus();
+      setTimeout(() => { // 시간차를 주어 watch 반응 후 초기화
+        // this.searchData = [];
+        this.searchOnOff = false;
+      },100)
     },
+    postData(){ //2: 자식 updateMsg가 실행되면
+      this.$emit('get-event',this.searchData) 
+      // 3: $emit 메소드를 통해서 부모의 get-event 라는 이벤트가 실행되고
+      // $emit(전달하는 특정한 이벤트, 같이 전달 될 데이터)
+    }
   },
   watch:{
-    searchValue(){
+    searchValue(val){
       // 자동완성 다시 보여지게
-      this.searchOnOff = true; 
+      if(this.cmData && val.length > 0){
+        this.searchData = this.cmData.filter((item) => {
+          return item.name.toLowerCase().includes(val.toLowerCase());
+        })
+        this.searchOnOff = true;
+      }else{
+        this.searchData = [];
+      }
     }
   }
 }
-</script>
 
+
+</script>
 
 
 <style scoped lang="scss">
@@ -202,9 +207,6 @@ export default {
         width:100%;
         height:0;
         opacity:0;
-        li {
-         
-        }
         button {
           width:100%;
           border:1px solid red;

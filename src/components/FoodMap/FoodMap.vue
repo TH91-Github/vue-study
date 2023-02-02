@@ -12,7 +12,8 @@
         <!-- 검색 -->
         <div class="cm-food__search">
           <CmSearch
-            :cmData="searchData">
+            :cmData="searchData"
+            @get-event="getData">
           </CmSearch>
         </div>        
         <!-- 슬라이드-->
@@ -79,8 +80,15 @@ export default {
           "default": "2023",
         },
       ],
+      resultData :[]
     }
   },
+  methods : {
+    getData(rData){
+      this.resultData = rData;
+      console.log(this.resultData)
+    }
+  }
 }
 </script>
 
