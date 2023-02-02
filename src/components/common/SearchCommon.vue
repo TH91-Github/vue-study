@@ -76,7 +76,7 @@ export default {
   el: document.querySelector('.cm-search'),
   inheritAttrs: false,
   props:{
-    cmOpt : {
+    cmData : {
       type: Object,
       default: () => ({})
     },
@@ -86,26 +86,6 @@ export default {
       searchValue:'',
       searchOnOff:false,
       searchData : [
-        {
-          "name": "탕탕",
-          "default": "2016",
-        },
-        {
-          "name": "논현각",
-          "default": "2023",
-        },
-        {
-          "name": "논현각22",
-          "default": "2023",
-        },
-        {
-          "name": "논현각33",
-          "default": "2023",
-        },
-        {
-          "name": "웨더",
-          "default": "2023",
-        },
       ],
       eInputWrap:'',
       eKeyListWrap:'',
@@ -124,6 +104,7 @@ export default {
     },
   },
   mounted () { 
+    this.searchData = this.cmData;
     this.eInputWrap = this.$el.querySelector('.cm-search__input');
     this.eKeyListWrap = this.$el.querySelector('.cm-search__input-key-list');
   },
@@ -149,7 +130,6 @@ export default {
       const keyLi = event.target.parentNode;
       const prevLi = keyLi.previousElementSibling;
       const nextLi = keyLi.nextElementSibling;
-
       if(event.keyCode == 38){ // ↑ 첫 번째에서는 input으로
         if(prevLi !== null){
           prevLi.querySelector('button').focus();
@@ -177,6 +157,7 @@ export default {
     },
     keywordListClick(event){ // 자동 완성 클릭 시 
       this.searchValue = event.target.innerText;
+      this.eInputWrap.querySelector('input').focus();
     },
   },
   watch:{
@@ -221,6 +202,9 @@ export default {
         width:100%;
         height:0;
         opacity:0;
+        li {
+         
+        }
         button {
           width:100%;
           border:1px solid red;
@@ -233,6 +217,9 @@ export default {
       .cm-search__input-key-list {
         height:auto;
         opacity:1;
+        & > ul > li {
+          
+        }
       }
     }
   }

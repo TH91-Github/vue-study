@@ -11,7 +11,9 @@
       <div class="cm-food__content">
         <!-- 검색 -->
         <div class="cm-food__search">
-          <CmSearch></CmSearch>
+          <CmSearch
+            :cmData="searchData">
+          </CmSearch>
         </div>        
         <!-- 슬라이드-->
         <div class="cm-food__slider">
@@ -55,6 +57,28 @@ export default {
         },
         bgSrc: "@food_map_visual.png",
       },
+      searchData : [
+        {
+          "name": "탕탕",
+          "default": "2016",
+        },
+        {
+          "name": "논현각",
+          "default": "2023",
+        },
+        {
+          "name": "논현각22",
+          "default": "2023",
+        },
+        {
+          "name": "논현각33",
+          "default": "2023",
+        },
+        {
+          "name": "웨더",
+          "default": "2023",
+        },
+      ],
     }
   },
 }
