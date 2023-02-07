@@ -19,7 +19,7 @@ const router = createRouter({
       path : "/:pathMatch(.*)",
       name : "not-found",
       meta: {
-        tit : "Error" 
+        tit : "Error❌"
       },
       component : ErrorPage
     },
@@ -27,7 +27,7 @@ const router = createRouter({
       path : "/", 
       name : "MainView", 
       meta: {
-        tit : "Vue th91" 
+        tit : "Vue th91😁" 
       },
       component : MainView
     },
@@ -35,7 +35,7 @@ const router = createRouter({
       path : "/FoodMap", 
       name : "FoodMap", 
       meta: {
-        tit : "FoodMap" 
+        tit : "🍱FoodMap🥩" 
       },
       component : FoodMap
     },
@@ -43,7 +43,7 @@ const router = createRouter({
       path : "/RecordStory", 
       name : "RecordStory", 
       meta: {
-        tit : "RecordStory" 
+        tit : "RecordStory📚" 
       },
       component : RecordStory 
     },
@@ -51,7 +51,7 @@ const router = createRouter({
       path : "/guide", 
       name : "Guide 컴포넌트", 
       meta: {
-        tit : "GuideList" 
+        tit : "GuideList📖" 
       },
       component : GuideList 
     },
@@ -59,7 +59,7 @@ const router = createRouter({
       path : "/guide/CommonGuide", 
       name : "공통 가이드", 
       meta: {
-        tit : "공통 UI 가이드" 
+        tit : "공통 UI 가이드🔍" 
       },
       component : CommonGuide
     },
@@ -67,7 +67,7 @@ const router = createRouter({
       path : "/guide/BannerGuide", 
       name : "BannerGuide 컴포넌트", 
       meta: {
-        tit : "BannerGuide" 
+        tit : "BannerGuide📘" 
       },
       component : BannerGuide 
     },
@@ -75,7 +75,7 @@ const router = createRouter({
       path : "/guide/SlideGuide", 
       name : "SlideGuide 컴포넌트", 
       meta: {
-        tit : "SlideGuide" 
+        tit : "SlideGuide📘" 
       },
       component : SlideGuide 
     },
@@ -83,7 +83,7 @@ const router = createRouter({
       path : "/guide/TabGuide", 
       name : "TabGuide 컴포넌트", 
       meta: {
-        tit : "TabGuide" 
+        tit : "TabGuide📘" 
       },
       component : TabGuide 
     },

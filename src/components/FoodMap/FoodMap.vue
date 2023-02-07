@@ -12,26 +12,40 @@
         <!-- 검색 -->
         <div class="cm-food__search">
           <CmSearch
-            :cmData="searchData"
-            @get-event="getData">
+            :cmData="$store.state.FoodStore.foods"
+            @getKey="getData">
           </CmSearch>
+          store 작업중
         </div>        
         <!-- 슬라이드-->
         <div class="cm-food__slider">
-          <CmSlider class="cm-food__slider-wrap">
-            <div>
-              슬라이드 영역
-            </div>
+            <CmSlider
+            :slideData="$store.state.FoodStore.newFoods"
+            class="cm-food__slider-wrap">
+            <template 
+              v-slot="swiper">
+              {{ swiper }}
+              <p>{{ swiper.tit}}</p>
+              <p>{{ swiper.default}}</p>
+            </template>
           </CmSlider>
         </div>
         <!-- list -->
         <div class="cm-food__list">
-          <ul>
-            <li>1</li>
-            <li>1</li>
-            <li>1</li>
-            <li>1</li>
-            <li>1</li>
+          <p 
+            class="error-txt"
+            v-if="message">
+            {{ message }}
+          </p>
+          <ul
+            class="cm-food__list-box"
+            v-else>
+            <li 
+              class="cm-food__list-item"
+              v-for="tt in $store.state.FoodStore.newFoods"
+              :key="tt">
+              {{tt.tit}}
+            </li>
           </ul>
         </div>
       </div>
@@ -53,42 +67,79 @@ export default {
     return {
       bannerOpt : {
         info: {
-          tit: "전국 맛을 기록하는 지도",
-          txt: "전국의 맛집을 \n 나만의 기록으로",
+          tit: "맛을 기록하는 지도",
+          txt: "지도에 채워지는\n 나만의 맛 정보!",
         },
         bgSrc: "@food_map_visual.png",
       },
-      searchData : [
-        {
-          "name": "탕탕",
-          "default": "2016",
+      slideData33 : [
+        { 
+          info: {
+            tit: "슬라이드 타이틀1",
+            txt: "슬라이드 소개11",
+          },
         },
-        {
-          "name": "논현각",
-          "default": "2023",
+        { 
+          info: {
+            tit: "슬라이드 타이틀1",
+            txt: "슬라이드 소개11",
+          },
         },
-        {
-          "name": "논현각22",
-          "default": "2023",
-        },
-        {
-          "name": "논현각33",
-          "default": "2023",
-        },
-        {
-          "name": "웨더",
-          "default": "2023",
+        { 
+          
+          info: {
+            tit: "슬라이드 타이틀2222",
+            txt: "슬라이드 소개22",
+          },
         },
       ],
-      resultData :[]
+      newData : [
+      { 
+          info: {
+            tit: "뉴이이이",
+            txt: "슬라이드 444",
+          },
+        },
+        { 
+          info: {
+            tit: "새로운 데이터",
+            txt: "슬라이드 444",
+          },
+        },
+      ]
     }
   },
-  methods : {
-    getData(rData){
-      this.resultData = rData;
-      console.log(this.resultData)
+  mounted () {
+    this.loadFoods();
+  },
+  computed : {
+    message() {
+      return this.$store.state.FoodStore.foods.message
     }
-  }
+  },
+
+  // 처음 뿌려주고 다음 요청으로 다시 데이터 값이 변경 되도록
+  methods : {
+    getData(rData){ // 자식에게 받은 데이터 : 검색 키워드에 따른 데이터
+      this.searchLoad(rData)
+      // 받은 데이터가 없을 시 검색된 결과가 없습니다.
+      this.dataChange();
+    },
+    async loadFoods() {
+      try{
+        await this.$store.dispatch('FoodStore/initFoods')
+      } catch(error) {
+        console.log('Reject!')
+      }
+    },
+    searchLoad(passData){ // 변경된 데이터를 update
+      this.$store.dispatch('FoodStore/keySearchFoods', passData)
+    },
+    dataChange() {
+      this.slideData33 = this.newData
+    }
+    
+  },
 }
 </script>
 

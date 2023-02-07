@@ -25,20 +25,18 @@
                 @click="keywordListClick"
                 @keydown.up.down.prevent="keyListArrow"
                 @focus="inputFocus">
-                {{ item.name }}
+                {{ item.tit }}
               </button>
             </li>
           </ul>
         </div>
       </div>
-
       <!-- 범주 선택이 필요할 경우 -->
       <div 
         class="cm-search__select cm-search__section"
         v-if="false">
         <CmSelect></CmSelect>
       </div>
-
       <!-- 검색 -->
       <div class="cm-search__btn cm-search__section">
         <button 
@@ -49,26 +47,10 @@
         </button>
       </div>
     </div>
-    <p style="text-align:center;">검색 목록 방향키 제어 준비중 </p>
   </div>
 </template>
-<!-- 
- 1. 방향키 위 아래로 움직일 수 있게.
- 2. 검색 셀렉된 값에 따라 범위 다르게.
- 3. 타이틀 값 키워드 등 카테고리 전체 내용으로 할 수 있게
- 데이터 값 하나로 합쳐서 텍스트 적기.
-
- /*
-리스트 포커스
-업 다운의 경우
-현재 기준 (index) 다음 목록으로 포커스
-*/
-
--->
 <script>
 import CmSelect from '@/components/common/SelectCommon'
-
-
 export default {
   components : {
     CmSelect
@@ -135,44 +117,47 @@ export default {
       const searchInput = this.$el.querySelector('.cm-search__input-key');
       if(searchInput.value == null || searchInput.value == "undefined" || searchInput.value == ""){
         alert("입력된 검색어가 없습니다.")
-      }else if(this.searchData.length > 0){
-        console.log("값 노출") // 부모로 값 전달 list에 뿌려야 하기에
-        this.postData(); // 데이터 부모에게 전달 $emit
-        this.searchOnOff = false;
-      }else{
-        console.log("검색된 값이 없습니다.")
+      }else if(this.searchValue.length > 0){
+        // 검색된 값 전달(비어 있는 경우 부모에서 따로 처리)
+        const passData = this.keyFilter(this.searchValue);
+        this.postData(passData); // 데이터 부모에게 전달 $emit
+        this.keyClean();
       }
     },
     keywordListClick(event){ // 자동 완성 클릭 시 
       this.searchValue = event.target.innerText;
       this.eInputWrap.querySelector('input').focus();
-      setTimeout(() => { // 시간차를 주어 watch 반응 후 초기화
-        // this.searchData = [];
-        this.searchOnOff = false;
-      },100)
+      this.keyClean();
     },
-    postData(){ //2: 자식 updateMsg가 실행되면
-      this.$emit('get-event',this.searchData) 
+    postData(data){ //2: 자식 updateMsg가 실행되면
+      this.$emit('getKey',data) 
       // 3: $emit 메소드를 통해서 부모의 get-event 라는 이벤트가 실행되고
       // $emit(전달하는 특정한 이벤트, 같이 전달 될 데이터)
+    },
+    keyFilter(val){
+      return this.searchData = this.cmData.filter((item) => {
+        return item.tit.toLowerCase().includes(val.toLowerCase());
+      })
+    },
+    keyClean() {
+      setTimeout(() => { // 시간차를 주어 watch 반응 후 초기화
+        this.searchData = [];
+        this.searchOnOff = false;
+      },100)
     }
   },
   watch:{
     searchValue(val){
       // 자동완성 다시 보여지게
       if(this.cmData && val.length > 0){
-        this.searchData = this.cmData.filter((item) => {
-          return item.name.toLowerCase().includes(val.toLowerCase());
-        })
+        this.keyFilter(val);
         this.searchOnOff = true;
       }else{
-        this.searchData = [];
+        this.keyClean();
       }
     }
   }
 }
-
-
 </script>
 
 

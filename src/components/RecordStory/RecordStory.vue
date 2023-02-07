@@ -8,7 +8,7 @@
             <CategorySlider
               class="cm-home__category-swiper"
               :swiperOpt="swiperOpt" 
-              :slideList="slideList">
+              :slideData="slideData">
               <template v-slot="swiper">
                 <a href="#" @click="categoryClick" class="cm-home__category-item">
                   <div class="item-head">
@@ -69,7 +69,7 @@ export default {
   }, 
   data() {
     return {
-      slideList : [
+      slideData : [
         {
           name:'Vue',
           mark:'ico-vue',

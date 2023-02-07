@@ -19,7 +19,7 @@
       <CmSlider 
         class="cm-banner__swiper"
         :swiperOpt="cmOpt.swiperOpt"
-        :slideList="cmOpt.swiperList">
+        :slideData="cmOpt.slideData">
         <template 
           v-slot="swiper">
           <div 

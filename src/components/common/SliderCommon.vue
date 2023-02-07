@@ -7,9 +7,9 @@
     >
     <!-- 슬라이드 값 있을 시-->
     <template 
-      v-if="slideList.length>0">
+      v-if="slideData.length>0">
       <SwiperSlide 
-        v-for="swiper in slideList"
+        v-for="swiper in slideData"
         :key="swiper">
         <SliderItem>
           <slot v-bind="swiper"></slot>
@@ -48,7 +48,7 @@ export default {
       type: Object,
       default: () => ({})
     },
-    slideList : {
+    slideData : {
       type: Object,
       default: () => ({})
     },

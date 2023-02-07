@@ -38,7 +38,7 @@
       </div>
       <div class="cm-info__explanation-item max-w-center">
         <CmSlider
-          :slideList="swiperList2"
+          :slideData="slideData2"
           :swiperOpt="swiperOpt2">
         </CmSlider>
       </div>
@@ -58,7 +58,7 @@
       <div class="cm-info__explanation-item max-w-center">
         <CmSlider
           class="cm-info-swiper-3"
-          :slideList="swiperList2"
+          :slideData="slideData2"
           :swiperOpt="swiperOpt3">
           <template 
             v-slot="swiper">
@@ -71,7 +71,7 @@
       </div>
     </div>
   </div><!-- cm-info -->
- 
+
 </template>
 
 <script>
@@ -85,12 +85,12 @@ export default {
     return {
       codeTag: { 
         code1 : `<CmSlider></CmSlider>`,
-        code2 : `<CmSlider :slideList="swiperList2" :swiperOpt="swiperOpt2"></CmSlider>`,
-        code2_2:`swiperList2:[{...},{...},...],swiperOpt2:{slidesPerView: 3,...}`,
-        code3 : `<CmSlider :slideList="swiperList2" :swiperOpt="swiperOpt3"><template v-slot="swiper"><p>{{ swiper.info.tit}}</p><p>{{ swiper.info.txt}}</p></template></CmSlider>`,
-        code3_2 : `swiperList2:[{info:{tit:"슬라이드 타이틀",txt:"슬라이드 소개"},{info:{...},...}],swiperOpt3:{...}`,
+        code2 : `<CmSlider :slideData="slideData2" :swiperOpt="swiperOpt2"></CmSlider>`,
+        code2_2:`slideData2:[{...},{...},...],swiperOpt2:{slidesPerView: 3,...}`,
+        code3 : `<CmSlider :slideData="slideData2" :swiperOpt="swiperOpt3"><template v-slot="swiper"><p>{{ swiper.info.tit}}</p><p>{{ swiper.info.txt}}</p></template></CmSlider>`,
+        code3_2 : `slideData2:[{info:{tit:"슬라이드 타이틀",txt:"슬라이드 소개"},{info:{...},...}],swiperOpt3:{...}`,
       },
-      swiperList2:[
+      slideData2:[
         { 
           info: {
             tit: "슬라이드 타이틀1",
