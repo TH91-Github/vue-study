@@ -15,18 +15,26 @@
             :cmData="$store.state.FoodStore.foods"
             @getKey="getData">
           </CmSearch>
-          store 작업중
         </div>        
         <!-- 슬라이드-->
-        <div class="cm-food__slider">
+        <div class="cm-food__slider-wrap">
             <CmSlider
             :slideData="$store.state.FoodStore.newFoods"
-            class="cm-food__slider-wrap">
+            :swiperOpt="swiperOpt"
+            class="cm-food__slider">
             <template 
               v-slot="swiper">
-              {{ swiper }}
-              <p>{{ swiper.tit}}</p>
-              <p>{{ swiper.default}}</p>
+              <a 
+                href="#"
+                class="cm-food__slider-banner">
+                <div class="cm-food__slider-img">
+                  <img :src="swiper.mainImg" :alt="swiper.mainImgAlt">
+                </div>
+                <div class="cm-food__slider-info">
+                  <p class="cm-food__slider-tit"><span class="cm-mark">{{ swiper.tit }}</span></p>
+                  <p class="cm-food__slider-txt">{{ swiper.txt }}</p>
+                </div>
+              </a>
             </template>
           </CmSlider>
         </div>
@@ -72,41 +80,23 @@ export default {
         },
         bgSrc: "@food_map_visual.png",
       },
-      slideData33 : [
-        { 
-          info: {
-            tit: "슬라이드 타이틀1",
-            txt: "슬라이드 소개11",
+      swiperOpt:{ // 슬라이드 컴포넌트에 옵션 전달
+        spaceBetween: 40,
+        breakpoints: {
+          320: {
+            slidesPerView: 1,
           },
-        },
-        { 
-          info: {
-            tit: "슬라이드 타이틀1",
-            txt: "슬라이드 소개11",
+          425: {
+            slidesPerView: 2,
           },
-        },
-        { 
-          
-          info: {
-            tit: "슬라이드 타이틀2222",
-            txt: "슬라이드 소개22",
+          768: {
+            slidesPerView: 3,
           },
-        },
-      ],
-      newData : [
-      { 
-          info: {
-            tit: "뉴이이이",
-            txt: "슬라이드 444",
+          1024: {
+            slidesPerView: 5,
           },
-        },
-        { 
-          info: {
-            tit: "새로운 데이터",
-            txt: "슬라이드 444",
-          },
-        },
-      ]
+        }
+      },
     }
   },
   mounted () {
@@ -117,7 +107,6 @@ export default {
       return this.$store.state.FoodStore.foods.message
     }
   },
-
   // 처음 뿌려주고 다음 요청으로 다시 데이터 값이 변경 되도록
   methods : {
     getData(rData){ // 자식에게 받은 데이터 : 검색 키워드에 따른 데이터
@@ -135,25 +124,76 @@ export default {
     searchLoad(passData){ // 변경된 데이터를 update
       this.$store.dispatch('FoodStore/keySearchFoods', passData)
     },
-    dataChange() {
-      this.slideData33 = this.newData
-    }
-    
   },
 }
 </script>
 
 <style lang="scss">
 .cm-food {
+  background:$c-sub-withe;
+  img {
+    width:100%;
+  }
   &__inner { 
     @include innerOpt();
   } 
+  &__content {
+    box-sizing:border-box;
+  }
   .cm-banner{
     &__visual{
       height:300px;
     }
   }
-
+  &__slider{
+    padding:30px;
+    &-wrap {
+      margin-top:80px;
+    }
+    &-banner {
+      display:block;
+      padding:0 40px 20px;
+      border-radius:5px;
+      background: rgba(255,255,255,0.2);
+      box-shadow:0px 5px 10px rgba(0, 0, 0,.1);
+      box-sizing:border-box;
+    }
+    &-img {
+      overflow:hidden;
+      position:relative;
+      top:-25px;
+      width:150px;
+      height:150px;
+      margin:0 auto;
+      img {
+        border-radius: 10px;
+        width:100%;
+        height:100%;
+        object-fit: cover;
+      }
+    }
+    &-info {
+      text-align:left;
+    }
+    &-tit {
+      font-size: 18px;
+      color:$c-dark;
+      .cm-mark {
+        &::before {
+          top:11px;
+        }
+        &::after {
+          top:12px;
+        }
+        
+      }
+    }
+    &-txt {
+      margin-top:8px;
+      font-size:14px;
+      color:$c-sub-dark;
+    }
+  }
   
 }
 </style>

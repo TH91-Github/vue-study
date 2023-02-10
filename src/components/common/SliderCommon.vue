@@ -9,6 +9,7 @@
     <template 
       v-if="slideData.length>0">
       <SwiperSlide 
+        :class="$attrs.class+'-item'"
         v-for="swiper in slideData"
         :key="swiper">
         <SliderItem>

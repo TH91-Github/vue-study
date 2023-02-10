@@ -116,7 +116,8 @@ export default {
     searchAction(){ // 엔터 & 클릭
       const searchInput = this.$el.querySelector('.cm-search__input-key');
       if(searchInput.value == null || searchInput.value == "undefined" || searchInput.value == ""){
-        alert("입력된 검색어가 없습니다.")
+        alert("입력된 검색어가 없습니다.");
+        this.postData(this.cmData);
       }else if(this.searchValue.length > 0){
         // 검색된 값 전달(비어 있는 경우 부모에서 따로 처리)
         const passData = this.keyFilter(this.searchValue);
