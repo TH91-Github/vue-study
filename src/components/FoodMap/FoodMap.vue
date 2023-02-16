@@ -32,6 +32,7 @@
                 </div>
                 <div class="cm-food__slider-info">
                   <p class="cm-food__slider-tit"><span class="cm-mark">{{ swiper.tit }}</span></p>
+                  <p class="cm-food__slider-txt">{{ swiper.category }}</p>
                   <p class="cm-food__slider-txt">{{ swiper.txt }}</p>
                 </div>
               </a>
@@ -82,11 +83,14 @@ export default {
       },
       swiperOpt:{ // 슬라이드 컴포넌트에 옵션 전달
         spaceBetween: 40,
+        slidesPerView:1,
+        observer: true, 
+        observeParents: true,
         breakpoints: {
           320: {
             slidesPerView: 1,
           },
-          425: {
+          480: {
             slidesPerView: 2,
           },
           768: {
@@ -100,7 +104,10 @@ export default {
     }
   },
   mounted () {
-    this.loadFoods();
+    const _this = this;
+    setTimeout(function (){
+      _this.loadFoods();
+    },500)
   },
   computed : {
     message() {
@@ -112,7 +119,6 @@ export default {
     getData(rData){ // 자식에게 받은 데이터 : 검색 키워드에 따른 데이터
       this.searchLoad(rData)
       // 받은 데이터가 없을 시 검색된 결과가 없습니다.
-      this.dataChange();
     },
     async loadFoods() {
       try{
@@ -126,6 +132,7 @@ export default {
     },
   },
 }
+
 </script>
 
 <style lang="scss">
@@ -145,6 +152,10 @@ export default {
       height:300px;
     }
   }
+  &__search {
+    padding:30px 0 0;
+    text-align:center;
+  }
   &__slider{
     padding:30px;
     &-wrap {
@@ -152,8 +163,9 @@ export default {
     }
     &-banner {
       display:block;
+      height:200px;
       padding:0 40px 20px;
-      border-radius:5px;
+      border-radius:8px;
       background: rgba(255,255,255,0.2);
       box-shadow:0px 5px 10px rgba(0, 0, 0,.1);
       box-sizing:border-box;
@@ -166,7 +178,7 @@ export default {
       height:150px;
       margin:0 auto;
       img {
-        border-radius: 10px;
+        border-radius: 15px;
         width:100%;
         height:100%;
         object-fit: cover;

@@ -13,15 +13,18 @@
           @keydown.up.down.prevent="inputArrow"
           @keypress.enter="searchAction" 
           @focus="inputFocus"/>
+        <i class="ico">search-icon</i>
         <div 
           class="cm-search__input-key-list"
           v-if="searchData.length">
           <ul>
             <li 
+              class="keyword-item"
               v-for="item in searchData"
               :key="item">
               <button 
                 type="button"
+                class="keyword-txt"
                 @click="keywordListClick"
                 @keydown.up.down.prevent="keyListArrow"
                 @focus="inputFocus">
@@ -163,29 +166,54 @@ export default {
 
 
 <style scoped lang="scss">
+$c-shadow :rgba(203,210,222,.5);
 .cm-search {
+  display:inline-block;
   position:relative;
+  padding:3px 3px 3px 20px;
+  border-radius:3px;
+  background:$c-white;
+  box-shadow:0px 10px 20px $c-shadow;
   &__inner {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
   }
   &__section {
-    margin-left:10px;
-    &:first-child{
+    position:relative;
+    margin-left:15px;
+    padding-left:15px;
+    &::after {
+      display: block;
+      position:absolute;
+      top:50%;
+      left:0;
+      width:2px;
+      height:50%;
+      background:$c-sub2;
+      border-radius:2px;
+      transform: translateY(-50%);
+      content:"";
+    }
+    &:first-child, &:last-child {
       margin-left:0;
+      padding-left:0;
+      &::after {
+        display:none;
+      }
     }
   }
   &__input {
     position:relative;
-    border: 1px solid rgba(0,0,0,0);
     box-sizing:border-box;
     &-key {
+      position:relative;
+      padding:15px 15px 15px 25px;
       border:none;
-      padding:3px;
-      border-bottom:1px solid $c-dark;
-      background: $c-white;
+      outline:none;
+      font-size:15px;
+      font-weight:550;
+      color:$c-dark;
       &-list {
-        overflow:hidden;
         position:absolute;
         top:100%;
         z-index:50;
@@ -193,29 +221,85 @@ export default {
         width:100%;
         height:0;
         opacity:0;
-        button {
-          width:100%;
-          border:1px solid red;
-          text-align:left;
+        .keyword {
+          &-item {
+            position:relative;
+            margin-top:2px;
+            &:first-child { 
+              margin-top:0;
+            }
+          }
+          &-txt {
+            width:100%;
+            padding:4px 20px;
+            font-size:15px;
+            color:$c-dark;
+            background:$c-white;
+            border-radius:3px;
+            box-shadow:0px 5px 10px $c-shadow;
+            text-align:left;
+          }
         }
       }
     }
+    .ico {
+      display:block;
+      position:absolute;
+      top:50%;
+      left:0;
+      width:16px;
+      height:16px;
+      background:url('@/assets/img/common/icon_search_b.png');
+      background-size: 16px 16px;
+      transform:translateY(-50%);
+      text-indent:-9999px;
+    }
     &.on {
-      border:1px solid red;
-      .cm-search__input-key-list {
-        height:auto;
-        opacity:1;
-        & > ul > li {
-          
+      .cm-search__input-key{ 
+        color:$c-point2;
+        &-list {
+          height:auto;
+          opacity:1;
+          .keyword {
+            &-item {
+              &:first-child {
+                &::before {
+                  display:block;
+                  position:absolute;
+                  top:0;
+                  left:50%;
+                  width:100%;
+                  height:1px;
+                  background: $c-point2;
+                  transform: translateX(-50%);
+                  animation: lineW 3s ease infinite;
+                  content:"";
+                }
+                @keyframes lineW {
+                  0%{width:0%;}
+                  50%{width:100%;}
+                  100%{width:0%;}
+                }
+              }
+            }
+          }
         }
+      }
+      .ico {
+        background:url('@/assets/img/common/icon_search_point2.png');
+      background-size: 16px 16px;
       }
     }
   }
   &__btn {
     .btn {
       display:inline-block;
-      padding:3px;
-      border:1px solid $c-point1;
+      height:100%;
+      padding:8px 10px;
+      font-size:15px;
+      background: $c-point2;
+      border-radius:5px;
+      color:$c-white;
     }
   }
 }

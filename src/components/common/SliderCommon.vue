@@ -4,6 +4,7 @@
     :class="$attrs.class"
     v-bind="swiperOpt"
     @swiper="onSwiper"
+    @slideChange="onSlideChange"
     >
     <!-- 슬라이드 값 있을 시-->
     <template 
@@ -54,18 +55,19 @@ export default {
       default: () => ({})
     },
   }, 
-  data() {
+  setup() {
+    const onSwiper = () => {
+        console.log("siwper ON");
+    };
+    const onSlideChange = () => {
+        console.log('slide change');
+        
+    };
     return {
-      
+      onSwiper,
+      onSlideChange
     }
-  },
-  created() {
-  },
-  methods:{
-    onSwiper(){
-      console.log("onSwiper")
-    }
-  },  
+  }
 }
 </script>
 
