@@ -3,9 +3,7 @@
     class="cm-swiper"
     :class="$attrs.class"
     v-bind="swiperOpt"
-    @swiper="onSwiper"
-    @slideChange="onSlideChange"
-    >
+    @swiper="onSwiper">
     <!-- 슬라이드 값 있을 시-->
     <template 
       v-if="slideData.length>0">
@@ -59,13 +57,13 @@ export default {
     const onSwiper = () => {
         console.log("siwper ON");
     };
-    const onSlideChange = () => {
-        console.log('slide change');
+    // const onSlideChange = () => {
+    //     console.log('slide change');
         
-    };
+    // };
     return {
       onSwiper,
-      onSlideChange
+      // onSlideChange
     }
   }
 }

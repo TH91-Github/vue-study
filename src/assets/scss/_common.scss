@@ -96,6 +96,47 @@ img {
       transform:translateY(-50%);
     }
   }
+  &-list {
+    padding-bottom:50px; 
+    &-item {
+      &:first-child {
+        border-top: 2px solid $c-dark;
+      }
+      &:last-child {
+        border-bottom: 1px solid $c-sub2;
+      }
+      &:nth-child(odd){
+        background:$c-white;
+      }
+      &:nth-child(even){
+        background:#f8f8f8;
+      }
+    }
+    &-cont {
+      overflow:hidden;
+      position:relative;
+      padding:8px 10px;
+      box-sizing:border-box;
+      &::after {
+        display:block;
+        position:absolute;
+        top:0;
+        left:-5px;
+        width:5px;
+        height:100%;
+        background:$c-point2;
+        border-top-right-radius:5px;
+        border-bottom-right-radius:5px;
+        transition: $base-transition;
+        content:"";  
+      }
+      &:hover, &:focus {
+        &::after{
+          left:0;
+        }
+      }
+    }
+  }
   &-dash {
     position:relative;
     padding-left: 8px;

@@ -170,7 +170,7 @@ $c-shadow :rgba(203,210,222,.5);
 .cm-search {
   display:inline-block;
   position:relative;
-  padding:3px 3px 3px 20px;
+  padding:3px 3px 3px 15px;
   border-radius:3px;
   background:$c-white;
   box-shadow:0px 10px 20px $c-shadow;
@@ -207,7 +207,7 @@ $c-shadow :rgba(203,210,222,.5);
     box-sizing:border-box;
     &-key {
       position:relative;
-      padding:15px 15px 15px 25px;
+      padding:10px 10px 10px 25px;
       border:none;
       outline:none;
       font-size:15px;
@@ -271,6 +271,7 @@ $c-shadow :rgba(203,210,222,.5);
                   width:100%;
                   height:1px;
                   background: $c-point2;
+                  border-radius:2px;
                   transform: translateX(-50%);
                   animation: lineW 3s ease infinite;
                   content:"";
@@ -298,8 +299,15 @@ $c-shadow :rgba(203,210,222,.5);
       padding:8px 10px;
       font-size:15px;
       background: $c-point2;
+      border:1px solid $c-point2;
       border-radius:5px;
       color:$c-white;
+      box-sizing:border-box;
+      transition: $base-transition;
+      &:hover, &:focus, &:active {
+        background:$c-white;
+        color:$c-point2;
+      }
     }
   }
 }

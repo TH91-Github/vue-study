@@ -32,7 +32,9 @@
                 </div>
                 <div class="cm-food__slider-info">
                   <p class="cm-food__slider-tit"><span class="cm-mark">{{ swiper.tit }}</span></p>
-                  <p class="cm-food__slider-txt">{{ swiper.category }}</p>
+                  <p class="cm-food__slider-txt">
+                    {{ categoryData(swiper.category) }}
+                  </p>
                   <p class="cm-food__slider-txt">{{ swiper.txt }}</p>
                 </div>
               </a>
@@ -41,21 +43,45 @@
         </div>
         <!-- list -->
         <div class="cm-food__list">
-          <p 
-            class="error-txt"
+          <div 
+            class="error-wrap"
             v-if="message">
-            {{ message }}
-          </p>
-          <ul
-            class="cm-food__list-box"
+            <p class="error-txt">{{ message }}</p>
+          </div>
+          <div
+            class="cm-food__list-inner"
             v-else>
-            <li 
-              class="cm-food__list-item"
-              v-for="tt in $store.state.FoodStore.newFoods"
-              :key="tt">
-              {{tt.tit}}
-            </li>
-          </ul>
+            <div class="cm-food__list-head">
+              <ul class="cm-food__list-head-box">
+                <li
+                  class="cm-food__list-head-item"
+                  v-for="foodHeadName in foodHeadList"
+                  :key="foodHeadName">
+                  <p class="cm-food__list-head-tit">{{foodHeadName}}</p>
+                </li>
+              </ul>
+            </div>
+            <div class="cm-food__list-cont">
+              <ul class="cm-food__list-box cm-list">
+                <li 
+                  class="cm-food__list-item cm-list-item"
+                  v-for="(foodData,index) in $store.state.FoodStore.newFoods"
+                  :key="foodData">
+                  <a 
+                    href="#"
+                    class="cm-food__list-info cm-list-cont">
+                    <p class="cm-food__list-number">{{ index+1 }}</p>
+                    <p class="cm-food__list-tit">{{ foodData.tit }}</p>
+                    <p class="cm-food__list-category">{{ categoryData(foodData.category) }}</p>
+                    <p class="cm-food__list-txt">{{ foodData.txt }}</p>
+                    <div class="cm-food__list-time">d{{ openCloseData(foodData.openClose.time) }}</div>
+                    <p class="cm-food__list-addr"><span class="tit">주소: </span>{{ foodData.address }}</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -101,6 +127,13 @@ export default {
           },
         }
       },
+      foodHeadList :[
+        "No.",
+        "이름",
+        "종류",
+        "설명",
+        "영업시간",
+      ]
     }
   },
   mounted () {
@@ -112,7 +145,7 @@ export default {
   computed : {
     message() {
       return this.$store.state.FoodStore.foods.message
-    }
+    },
   },
   // 처음 뿌려주고 다음 요청으로 다시 데이터 값이 변경 되도록
   methods : {
@@ -130,9 +163,18 @@ export default {
     searchLoad(passData){ // 변경된 데이터를 update
       this.$store.dispatch('FoodStore/keySearchFoods', passData)
     },
+    categoryData (_cData){
+      if( _cData !== undefined){
+        return _cData[0]
+      }
+    },
+    openCloseData ( _oData ){
+      if( _oData !== undefined){
+        console.log(_oData)
+      }
+    }
   },
 }
-
 </script>
 
 <style lang="scss">
@@ -157,25 +199,24 @@ export default {
     text-align:center;
   }
   &__slider{
-    padding:30px;
+    padding:50px 30px;
     &-wrap {
-      margin-top:80px;
+      margin-top:50px;
     }
     &-banner {
       display:block;
-      height:200px;
-      padding:0 40px 20px;
+      height:250px;
+      padding:0 20px 20px;
       border-radius:8px;
       background: rgba(255,255,255,0.2);
       box-shadow:0px 5px 10px rgba(0, 0, 0,.1);
       box-sizing:border-box;
     }
     &-img {
-      overflow:hidden;
       position:relative;
-      top:-25px;
-      width:150px;
-      height:150px;
+      top:-50px;
+      width:130px;
+      height:130px;
       margin:0 auto;
       img {
         border-radius: 15px;
@@ -206,6 +247,78 @@ export default {
       color:$c-sub-dark;
     }
   }
-  
+  &__list {
+    padding: 0 30px;
+    &-inner {
+      @include innerOpt();
+    }
+    // 리스트 head 및 컨텐츠 가로 사이즈 관련
+    @mixin itemWidth(){
+      $firstW : 5%;
+      $col : ($firstW, 20%, calc(23% - $firstW), 32%, 25%, 100%);
+      @for $num from 1 through length($col)  {
+        >*:nth-child(#{$num}){
+          width: nth($col,$num);
+          @include ellipsis(1);
+        }
+        @if($num == length($col)){
+          >*:nth-child(#{$num}){
+            padding-left:$firstW;
+          }
+        }
+      }
+    }
+    &-head {
+      &-box {
+        display:flex;
+        @include itemWidth;
+        background:$c-point2;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
+      &-item {
+        padding:8px 10px;
+        box-sizing:border-box;
+        > p {
+          color: $c-white;
+        }
+      }
+    }
+    &-info {
+      display:flex;
+      flex-wrap:wrap;
+      @include itemWidth;
+      &>p{
+        transition: $base-transition;
+      }
+      &:hover, &:focus {
+        >p{
+          color:$c-point2;
+        }
+      }
+    }
+    &-number {
+      font-size:14px;
+    }
+    &-tit {
+      font-weight:550;
+    }
+    &-addr {
+      position: relative;
+      margin-top:3px;
+      padding-top:3px;
+      &::after {
+        display:block;
+        position:absolute;
+        top:0;
+        left:50%;
+        width:90%;
+        height:1px;
+        background: rgba(0,0,0,.1);
+        transform: translateX(-50%);
+        content:"";
+      }
+    }
+  }
 }
 </style>
