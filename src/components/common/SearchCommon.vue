@@ -174,6 +174,7 @@ $c-shadow :rgba(203,210,222,.5);
   border-radius:3px;
   background:$c-white;
   box-shadow:0px 10px 20px $c-shadow;
+  box-sizing:border-box;
   &__inner {
     display: flex;
     justify-content: center;
@@ -308,6 +309,44 @@ $c-shadow :rgba(203,210,222,.5);
         background:$c-white;
         color:$c-point2;
       }
+    }
+  }
+  @include breakpoint("mobile"){
+    padding: 2px 2px 2px 10px;
+    &__input {
+      &-key {
+        padding:10px 10px 10px 20px;
+        font-size:14px;
+        &-list {
+          .keyword {
+            &-txt {
+              padding:4px 20px;
+              font-size:14px;
+              box-shadow:0px 3px 8px $c-shadow;
+            }
+          }
+        }
+      }
+      .ico {
+        width:12px;
+        height:12px;
+        background:url('@/assets/img/common/icon_search_b.png');
+        background-size: 12px 12px;
+        transform:translateY(-50%);
+      }
+      &.on {
+        .ico {
+          background:url('@/assets/img/common/icon_search_point2.png');
+          background-size: 12px 12px;
+        }
+      }
+    }
+  }
+  &__btn {
+    .btn {
+      padding:6px 8px;
+      font-size:14px;
+      border-radius:3px;
     }
   }
 }

@@ -9,6 +9,16 @@
         <span class="font-bold cm-dash">컴포넌트 사용:</span>
         <span class="font-bold color-p2">[CmSlider]</span> import CmSlider from '@/components/common/SliderCommon'
       </p>
+      <p class="txt">
+        <span class="font-bold cm-dash">참고: 
+          <a 
+            href="https://swiperjs.com/" 
+            target="_blank" 
+            title="새 창 열림">
+            https://swiperjs.com/
+          </a>
+        </span>
+      </p>
 
     </div>
     <div class="cm-info__component">
@@ -70,7 +80,74 @@
         </CmSlider>
       </div>
     </div>
+    <div class="cm-info__component">
+      <div class="cm-info__explanation">
+        <p class="tit">4. navigation : 좌우 버튼</p>
+        <div class="cm-code">
+          <code>
+            <span class="component">{{codeTag.code4}}</span>
+          </code>
+          <code>
+            <span class="data">{{codeTag.code4_2}}</span>
+          </code>
+        </div>
+      </div>
+      <div class="cm-info__explanation-item max-w-center">
+        <CmSlider
+          :slideData="slideData2"
+          :swiperOpt="swiperOpt4">
+        </CmSlider>
+      </div>
+    </div>
+    <div class="cm-info__component">
+      <div class="cm-info__explanation">
+        <p class="tit">5. pagination</p>
+        <div class="cm-code">
+          <code>
+            <span class="component">{{codeTag.code5}}</span>
+          </code>
+          <code>
+            <span class="data">{{codeTag.code5_2}}</span>
+          </code>
+        </div>
+      </div>
+      <div class="cm-info__explanation-item max-w-center">
+        <CmSlider
+          :slideData="slideData2"
+          :swiperOpt="swiperOpt5">
+        </CmSlider>
+      </div>
+    </div>
+    <div class="cm-info__component">
+      <div class="cm-info__explanation">
+        <p class="tit">6. scrollbar </p>
+        <div class="cm-code">
+          <code>
+            <span class="component">{{codeTag.code6}}</span>
+          </code>
+          <code>
+            <span class="data">{{codeTag.code6_2}}</span>
+          </code>
+        </div>
+      </div>
+      <div class="cm-info__explanation-item max-w-center">
+        <CmSlider
+          :slideData="slideData2"
+          :swiperOpt="swiperOpt6">
+        </CmSlider>
+      </div>
+    </div>
+    
   </div><!-- cm-info -->
+
+  <!--
+     navigation: true,
+      scrollbar: true,
+      pagination: {
+        clickable :true
+      }
+
+  -->
 
 </template>
 
@@ -89,6 +166,12 @@ export default {
         code2_2:`slideData2:[{...},{...},...],swiperOpt2:{slidesPerView: 3,...}`,
         code3 : `<CmSlider :slideData="slideData2" :swiperOpt="swiperOpt3"><template v-slot="swiper"><p>{{ swiper.info.tit}}</p><p>{{ swiper.info.txt}}</p></template></CmSlider>`,
         code3_2 : `slideData2:[{info:{tit:"슬라이드 타이틀",txt:"슬라이드 소개"},{info:{...},...}],swiperOpt3:{...}`,
+        code4 : `<CmSlider :slideData="slideData2" :swiperOpt="swiperOpt4"></CmSlider>`,
+        code4_2:`slideData2:생략, swiperOpt4:{navigation: true}`,
+        code5 : `<CmSlider :slideData="slideData2" :swiperOpt="swiperOpt5"></CmSlider>`,
+        code5_2:`slideData2:생략, swiperOpt5:{pagination: {clickable:true}}`,
+        code6 : `<CmSlider :slideData="slideData2" :swiperOpt="swiperOpt6"></CmSlider>`,
+        code6_2:`slideData2:생략, swiperOpt6:{pagination: {scrollbar:true}}`,
       },
       slideData2:[
         { 
@@ -128,7 +211,19 @@ export default {
       },
       swiperOpt3:{
         slidesPerView: 2,
+      },
+      swiperOpt4:{
+        navigation: true,
+      },
+      swiperOpt5:{
+        pagination: {
+          clickable: true
+        }
+      },
+      swiperOpt6:{
+        scrollbar: true
       }
+
     }
   },
   mounted () {

@@ -22,5 +22,6 @@ export default {
 <style scoped lang="scss">
 .main-wrap {
   position: relative;
+  height:100%;
 }
 </style>

@@ -43,7 +43,8 @@ $base-transition: all .3s;
   display: -webkit-box;
   overflow:hidden;
   @if not ($hiehgt == $base-font-size) { /* 기본 사이즈가 아닐 경우 */
-    height:$hiehgt*$line;
+    height:($hiehgt+4)*$line;
+    line-height:$hiehgt+4;
   }
   -webkit-line-clamp:$line;
   -webkit-box-orient: vertical;
@@ -62,29 +63,28 @@ $base-transition: all .3s;
 
 
 @mixin breakpoint($point) {
-  @if $point == pc {
+  @if $point == pc { //max-width 1920
       @media (max-width: $screen-xl)  {
           @content;
       }
   }
-  @else if $point == wide {
+  @else if $point == wide { // min-width 16880
     @media (min-width: $screen-l) {
         @content;
     }
 }
-  @else if $point == tablet {
+  @else if $point == tablet { // max-width 1280
       @media (max-width: $screen-m) {
           @content;
       }
   }
-  @else if $point == mobile {
+  @else if $point == mobile { // max-width 768
       @media (max-width: $screen-s) {
           @content;
       }
   }
 }
-
-@mixin breakMinMax($mq-min, $mq-max) {
+@mixin breakMinMax($mq-min, $mq-max) { // min: width - max : width
   @media (min-width: $mq-min) and (max-width: $mq-max) {
       @content;
   }

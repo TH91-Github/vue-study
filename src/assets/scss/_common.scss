@@ -72,8 +72,26 @@ img {
   &-vue {
     background: #00bb7c;
   }
+  &-map-point {
+    display:inline-block;
+    width:16px;
+    height:16px;
+    background: url('@/assets/img/common/icon_point_b.png');
+    background-size:16px 16px;
+    text-indent:-9999px;
+    &.point2 {
+      background: url('@/assets/img/common/icon_point2.png');
+      background-size:16px 16px;
+    }
+    &.white {
+      background: url('@/assets/img/common/icon_point_w.png');
+      background-size:16px 16px;
+    }
+  }
 }
-
+.cm-txt-bg {
+  
+}
 .cm {
   &-mark{
     position:relative;
@@ -94,6 +112,11 @@ img {
     &::after {
       background: $c-point1;
       transform:translateY(-50%);
+    }
+    &.point4 {
+      &::before, &::after {
+        background: $c-point4;        
+      }
     }
   }
   &-list {
@@ -147,6 +170,23 @@ img {
       width:5px;
       height:1px;
       background: $c-sub1;
+      content:"";
+    }
+  }
+  &-txt-bg {
+    display:inline-block;
+    position:relative;
+    &::after {
+      display:block;
+      position:absolute;
+      bottom:0;
+      left:3%;
+      width:100%;
+      height:30%;
+      background:$c-white;
+      border-top-right-radius:10px;
+      border-bottom-left-radius:10px;
+      opacity:0.3;
       content:"";
     }
   }

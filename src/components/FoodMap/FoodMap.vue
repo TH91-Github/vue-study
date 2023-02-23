@@ -18,10 +18,10 @@
         </div>        
         <!-- 슬라이드-->
         <div class="cm-food__slider-wrap">
-            <CmSlider
-            :slideData="$store.state.FoodStore.newFoods"
-            :swiperOpt="swiperOpt"
-            class="cm-food__slider">
+          <CmSlider
+          :slideData="$store.state.FoodStore.newFoods"
+          :swiperOpt="swiperOpt"
+          class="cm-food__slider">
             <template 
               v-slot="swiper">
               <a 
@@ -31,11 +31,17 @@
                   <img :src="swiper.mainImg" :alt="swiper.mainImgAlt">
                 </div>
                 <div class="cm-food__slider-info">
-                  <p class="cm-food__slider-tit"><span class="cm-mark">{{ swiper.tit }}</span></p>
+                  <p class="cm-food__slider-tit">
+                    <span class="cm-txt-bg">
+                      <span class="cm-mark point4">{{ swiper.tit }}</span>
+                    </span>
+                  </p>
                   <p class="cm-food__slider-txt">
                     {{ categoryData(swiper.category) }}
                   </p>
-                  <p class="cm-food__slider-txt">{{ swiper.txt }}</p>
+                  <p class="cm-food__slider-txt">
+                    {{ swiper.txt }}
+                  </p>
                 </div>
               </a>
             </template>
@@ -69,13 +75,14 @@
                   :key="foodData">
                   <a 
                     href="#"
-                    class="cm-food__list-info cm-list-cont">
-                    <p class="cm-food__list-number">{{ index+1 }}</p>
-                    <p class="cm-food__list-tit">{{ foodData.tit }}</p>
-                    <p class="cm-food__list-category">{{ categoryData(foodData.category) }}</p>
-                    <p class="cm-food__list-txt">{{ foodData.txt }}</p>
-                    <div class="cm-food__list-time">d{{ openCloseData(foodData.openClose.time) }}</div>
-                    <p class="cm-food__list-addr"><span class="tit">주소: </span>{{ foodData.address }}</p>
+                    class="cm-food__list-info cm-list-cont"
+                    :title="`${foodData.tit} 상세보기`">
+                    <p class="cm-food__list-txt number">{{ index+1 }}</p>
+                    <p class="cm-food__list-txt name">{{ foodData.tit }}</p>
+                    <p class="cm-food__list-txt category">{{ categoryData(foodData.category) }}</p>
+                    <p class="cm-food__list-txt desc">{{ foodData.txt }}</p>
+                    <div class="cm-food__list-txt time">{{ openCloseData(foodData.openClose.time) }}</div>
+                    <p class="cm-food__list-txt addr"><span class="tit ico-map-point point2">주소</span>{{ foodData.address }}</p>
                   </a>
                 </li>
               </ul>
@@ -108,24 +115,37 @@ export default {
         bgSrc: "@food_map_visual.png",
       },
       swiperOpt:{ // 슬라이드 컴포넌트에 옵션 전달
-        spaceBetween: 40,
+        spaceBetween: 15,
         slidesPerView:1,
-        observer: true, 
+        centeredSlides: true,
+        observer: true,
         observeParents: true,
         breakpoints: {
           320: {
             slidesPerView: 1,
+            spaceBetween: 0,
           },
-          480: {
+          640: {
             slidesPerView: 2,
+            spaceBetween: 15,
           },
           768: {
-            slidesPerView: 3,
+            slidesPerView: 4,
           },
           1024: {
             slidesPerView: 5,
           },
-        }
+        },
+        loop:true,
+        loopAdditionalSlides : 1,
+        watchOverflow : true,
+        autoplay: {
+          delay:4000,
+          disableOnInteraction: false
+        },
+        pagination: {
+          clickable :true
+        },
       },
       foodHeadList :[
         "No.",
@@ -165,27 +185,32 @@ export default {
     },
     categoryData (_cData){
       if( _cData !== undefined){
-        return _cData[0]
+        return _cData[0].split(",").join(', ');
       }
     },
-    openCloseData ( _oData ){
+    openCloseData (_oData){
       if( _oData !== undefined){
-        console.log(_oData)
+        const openTxt = this.thisOpenChk(_oData);
+        return openTxt;
       }
+    },
+    thisOpenChk(openData){
+      const d = new Date();
+      const dayN = d.getDay();
+      return `${openData[dayN][0]} : ${openData[dayN][1]}`;
     }
   },
 }
+
 </script>
 
 <style lang="scss">
 .cm-food {
+  height:100%;
   background:$c-sub-withe;
   img {
     width:100%;
   }
-  &__inner { 
-    @include innerOpt();
-  } 
   &__content {
     box-sizing:border-box;
   }
@@ -199,38 +224,55 @@ export default {
     text-align:center;
   }
   &__slider{
-    padding:50px 30px;
+    padding:0 0 20px;
     &-wrap {
-      margin-top:50px;
+      margin-top:30px;
     }
     &-banner {
+      overflow:hidden;
       display:block;
-      height:250px;
-      padding:0 20px 20px;
+      position:relative;
+      height:150px;
+      padding:20px;
       border-radius:8px;
       background: rgba(255,255,255,0.2);
       box-shadow:0px 5px 10px rgba(0, 0, 0,.1);
       box-sizing:border-box;
     }
     &-img {
-      position:relative;
-      top:-50px;
-      width:130px;
-      height:130px;
-      margin:0 auto;
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      &::after{
+        display:block;
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background:$c-dark;
+        transition:$base-transition;
+        opacity:0;
+        content:"";
+      }
       img {
-        border-radius: 15px;
         width:100%;
         height:100%;
         object-fit: cover;
       }
     }
     &-info {
+      position:relative;
+      z-index:2;
       text-align:left;
+      transition:$base-transition;
+      opacity:0;
     }
     &-tit {
       font-size: 18px;
-      color:$c-dark;
+      color:$c-white;
       .cm-mark {
         &::before {
           top:11px;
@@ -238,16 +280,41 @@ export default {
         &::after {
           top:12px;
         }
-        
+      }
+      & + p {
+        margin-top:10px;
       }
     }
     &-txt {
-      margin-top:8px;
+      margin-top:5px;
       font-size:14px;
-      color:$c-sub-dark;
+      padding-left:12px;
+      color:$c-white;
+      &:last-child {
+        @include ellipsis(2, 14px);
+      }
+    }
+    &-item{
+      &:hover, &:focus, &.swiper-slide-active {
+        
+        .cm-food__slider-img {
+          &::after {
+            opacity:0.75;
+          }
+        }
+        .cm-food__slider-info {
+          opacity:1;
+        }
+      }
+    }
+    .swiper-pagination {
+      .swiper-pagination-bullet-active {
+        background: $c-point2;
+      }
     }
   }
   &__list {
+    margin-top:30px;
     padding: 0 30px;
     &-inner {
       @include innerOpt();
@@ -279,7 +346,7 @@ export default {
       &-item {
         padding:8px 10px;
         box-sizing:border-box;
-        > p {
+        .cm-food__list-head-tit {
           color: $c-white;
         }
       }
@@ -288,25 +355,27 @@ export default {
       display:flex;
       flex-wrap:wrap;
       @include itemWidth;
-      &>p{
+      .cm-food__list-txt {
+        padding-right:10px;
+        box-sizing:border-box;
         transition: $base-transition;
       }
       &:hover, &:focus {
-        >p{
+        .cm-food__list-txt {
           color:$c-point2;
         }
       }
     }
-    &-number {
+    &-txt.number {
       font-size:14px;
     }
-    &-tit {
+    &-txt.name {
       font-weight:550;
     }
-    &-addr {
+    &-txt.addr {
       position: relative;
-      margin-top:3px;
-      padding-top:3px;
+      margin-top:5px;
+      padding-top:5px;
       &::after {
         display:block;
         position:absolute;
@@ -318,7 +387,75 @@ export default {
         transform: translateX(-50%);
         content:"";
       }
+      .ico-map-point {
+        transform: translateY(2px);
+      }
     }
   }
+  @include breakpoint("mobile"){
+    .cm-banner{
+      &__visual{
+        height:150px;
+      }
+    }
+    &__slider{
+      &-banner {
+        padding:10px 30px;
+        height:100px;
+        border-radius:0;
+      }
+      &-tit {
+        font-size: 16px;
+        .cm-mark {
+          &::before {
+            top:9px;
+          }
+          &::after {
+            top:10px;
+          }
+        }
+        & + p {
+          margin-top:8px;
+        }
+      }
+      &-txt {
+        font-size:12px;
+        &:last-child {
+          @include ellipsis(2, 12px);
+        }
+      }
+    }
+    &__list {
+      margin-top:20px;
+      &-head {
+        display:none;
+      }
+      &-info {
+        display:flex;
+        flex-wrap:wrap;
+        .cm-food__list-txt {
+          padding-right:10px;
+        }
+        &:hover, &:focus {
+          .cm-food__list-txt {
+            color:$c-point2;
+          }
+        }
+      }
+      &-txt.number {
+        width:10%;
+      }
+      &-txt.name {
+        width:50%;
+      }
+      &-txt.category {
+        width:40%;
+      }
+      &-txt.desc, &-txt.time, &-txt.addr {
+        display:none;
+      }
+    }
+  }
+  
 }
 </style>

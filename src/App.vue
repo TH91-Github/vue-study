@@ -37,6 +37,9 @@ export default {
 <style lang="scss">
 @import '@/assets/scss/common.scss';
 
+#app{
+  min-width:320px;
+}
 #app, .wrap {
   height:100%;
 }

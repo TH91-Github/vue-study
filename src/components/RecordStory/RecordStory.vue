@@ -204,14 +204,12 @@ export default {
           margin-top:10px;
           font-size: 22px;
           font-weight:550;
-          line-height:26px;
-          @include ellipsis(1);
+          @include ellipsis(1, 22px);
         }
         &-txt {
           margin-top:5px;
           font-size:18px;
-          line-height:22px;
-          @include ellipsis(2, 22px);
+          @include ellipsis(2, 18px);
         }
       }
       &-info {
@@ -220,8 +218,7 @@ export default {
           left:20px;
           bottom:40px;
           font-size: 14px;
-          line-height: 18px;
-          @include ellipsis(1);
+          @include ellipsis(1, 14px);
         }
         &-update {
           position: absolute;
