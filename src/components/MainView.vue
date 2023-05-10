@@ -1,14 +1,13 @@
 <template>
   <div class="main-wrap">
-    <!-- 맛 지도 -->
-    <FoodMap></FoodMap>
+    <TodoTemplate></TodoTemplate>
   </div>
 </template>
 <script>
-import FoodMap from '@/components/FoodMap/FoodMap.vue'
+import TodoTemplate from '@/components/TodoList/TodoTemplate'
 export default {
   components: {
-    FoodMap
+    TodoTemplate
   },
   data() {
     return {
@@ -17,7 +16,6 @@ export default {
   }
 }
 </script>
-
 
 <style scoped lang="scss">
 .main-wrap {
