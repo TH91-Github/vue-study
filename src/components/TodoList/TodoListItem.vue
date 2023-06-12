@@ -1,77 +1,152 @@
-<template>
-  <div>
-    <ul>
-      <li v-for="(todoItem, index) in propsdata" class="shadow" v-bind:key="todoItem.item" >
-        <span
-          class="checkBtn" 
-          :class="{'checkBtnCompleted': !todoItem.completed}">
-          <i class="fas fa-check"></i>
-        </span>
-        <button 
-          type="button" 
-          class="todolist-item" 
-          :class="{'textCompleted':todoItem.completed}"
-          v-on:click="toggleComplete(todoItem,index)">
-          {{ todoItem.item }}
-        </button>
-        <button 
-          type="button" 
-          class="removeBtn" 
-          v-on:click="removeTodo(todoItem, index)">
-          <i class="fas fa-trash-alt"></i>
-        </button>
-      </li> 
-    </ul>
-  </div>
+<script setup>
+  import  {defineProps, defineEmits, ref} from 'vue';
+  const props = defineProps(["todo", "viewList","sType"])
+  const emit = defineEmits(["emitUpDate", "emitToggle", "emitRemove"]);
+  const editOnOff = ref(false);
+  const editUser = ref('');
+  const editText = ref('');
+
+  console.log(editOnOff.value)
+  // 최종 부모에게 전달 
+  function onClickUpDate(todo){
+    if(editOnOff.value && editUser.value !== '' && editText.value !== ''){
+        alert("수정 완료");
+        emit("emitUpDate", todo, editUser.value, editText.value);
+        editUser.value = "";
+        editText.value = "";
+    }
+    editOnOff.value = !editOnOff.value;
+  }
+
+  function onClicToggle(todo){
+    emit("emitToggle", todo);
+  }
+  function onClickRemove(todo){
+    emit("emitRemove", todo);
+  }
+</script>
+<template lang="">
+    <li 
+      v-show="props.todo.listType === props.sType"
+      class="TodoListItem">
+      <button 
+        type="button"
+        class="TodoListItem-checked"
+        :class="{checked:props.todo.checked}"
+        @click="onClicToggle(props.todo)"
+      >
+        <span class="user">{{props.todo.user}}</span>
+        <span class="text">{{props.todo.text}}</span>
+      </button>
+      <button
+        type="button"
+        class="TodoListItem-update"
+        @click="onClickUpDate(props.todo)"
+      >
+        수정
+      </button>
+      <button
+        type="button"
+        class="TodoListItem-remove"
+        @click="onClickRemove(props.todo)"
+      >
+        삭제
+      </button>
+      <div 
+        className="TodoListItem__edit"
+        v-show="editOnOff"
+      >
+        <input 
+          className="TodoInput"
+          name="user"
+          title="수정할 이름을 입력하세요"
+          placeholder="이름"
+          v-model="editUser"
+        />
+        <input 
+          className="TodoInput"
+          name="text" 
+          v-model="editText"
+        />
+      </div>
+    </li>
 </template>
-<script>
-export default {
-  props: ['propsdata'],
-  methods: {
-    removeTodo: function(todoItem, index) {
-      this.$emit('removeItem', todoItem, index);
-    },
-    toggleComplete: function(todoItem, index) {
-      console.log(todoItem)
-      this.$emit('toggleItem', todoItem, index);
+
+<style scoped lang="scss">
+.TodoListItem{
+  display:flex;
+  position:relative;
+  &-checked {
+    flex-grow: 1;
+    position:relative;
+    padding-left:20px;
+    border:none;
+    background:transparent;
+    text-align:left;
+    &.checked {
+      &:before {
+        display:block;
+        position:absolute;
+        left:0;
+        content:"✅";
+      }
+    }
+  }
+  .user{
+    margin-right:10px;
+  }
+  &-remove{
+    position:Relative;
+    width:30px;
+    height:30px;
+    border-radius:5px;
+    background:transparent;
+    text-indent:-9999px;
+    &::before, &::after {
+      display:block;
+      position:absolute;
+      top:50%;
+      left:50%;
+      width:80%;
+      height:1px;
+      margin-left:-40%;
+      background:red;
+      content:"";
+    }
+    &::before {
+      transform: rotate(135deg) translateX(0%);
+    }
+    &::after {
+      transform: rotate(45deg) translateX(0%);
+    }
+  }
+  .TodoListItem__edit{
+    position:absolute;
+    top:0;
+    left:0;
+    width:calc(100% - (30px * 2));
+    height:100%;
+    background:#000e4c;
+    border:1px solid #dbdbdb;
+    text-align:left;
+    .TodoInput {
+      position:relative;
+      margin-left:10px;
+      padding-left:10px;
+      height:100%;
+      padding:3px 10px;
+      background:transparent;
+      box-sizing:border-box;
+      border:none;
+      color:#fff;
+      &::placeholder { 
+        color:#fff;
+      }
+      &:first-child {
+        margin-left:0;
+        border-right:1px solid #dbdbdb;
+      }
     }
   }
 }
-</script>
-<style scoped lang="scss">
-ul {
-  max-width:500px;
-  margin:0 auto;
-  margin-top: 0;
-  padding-left: 0;
-  text-align: left;
-  list-style-type: none;
-}
-li {
-  display: flex;
-  min-height: 50px;
-  height: 50px;
-  margin: 0.5rem 0 0;
-  padding: 0 0.9rem;
-  background: white;
-  border-radius: 5px;
-  line-height: 50px;
-}
-.checkBtn {
-  color: #62acde;
-  margin-right: 5px;
-  line-height: 45px;
-}
-.checkBtnCompleted {
-  color: #b3adad;
-}
-.textCompleted {
-  color: #b3adad;
-  text-decoration: line-through;
-}
-.removeBtn {
-  margin-left: auto;
-  color: #de4343;
-}
-
 </style>

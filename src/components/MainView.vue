@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import TodoTemplate from '@/components/TodoList/TodoTemplate'
+import TodoTemplate from '@/components/TodoListApi/TodoListApi'
 export default {
   components: {
     TodoTemplate

@@ -2,7 +2,12 @@
   <div class="inputBox shadow">
     <input 
       type="text" 
-      v-model="newTodoItem"
+      v-model="titValue"
+      v-on:keyup.enter="addTodo"
+    >
+    <input 
+      type="text" 
+      v-model="textValue"
       v-on:keyup.enter="addTodo"
     >
     <button
@@ -19,21 +24,21 @@ import {ref} from 'vue';
 export default {
   emit:['addTodoItem'],
   setup(props,{emit}){
-    const newTodoItem = ref("");
+    const titValue = ref("");
+    const textValue = ref("");
+    
     function addTodo() {
-      if(newTodoItem.value !== ""){
+      if(titValue.value !== "" && textValue.value !== ""){
         // this.$emit('이벤트 이름', 인자1, 인자2, ...);
-        emit('addTodoItem', newTodoItem.value)
-        clearInput();
+        emit('addTodoItem', titValue.value, textValue.value)
+        titValue.value="";
+        textValue.value="";
       }
     }
-    function clearInput() {
-      newTodoItem.value="";
-    }
     return {
-      newTodoItem,
-      addTodo,
-      clearInput
+      titValue,
+      textValue,
+      addTodo
     }
   }
 }
@@ -43,29 +48,30 @@ input:focus {
   outline: none;
 }
 .inputBox {
+  position:relative;
   max-width:500px;
   margin:0 auto;
   background: white;
   height: 48px;
   line-height: 48px;
   border-radius: 5px;
+  text-align:left;
 }
 .inputBox input {
-  width:calc(100% - 3rem);
+  display:inline-block;
+  width: calc((100% - 48px) / 2);
   height: 100%;
   border:1px solid #999;
-  border-right: none;
   padding:2px 15px;
   box-sizing:border-box;
   vertical-align:top;
 }
 .addContainer {
-  float: right;
-  background: linear-gradient(to right, #62EAC6, #32CEE6);
-  display: block;
-  width: 3rem;
-  height: 3rem;
+  display: inline-block;
+  width: 48px;
+  height: 48px;
   border-radius: 0 5px 5px 0;
+  background: linear-gradient(to right, #62EAC6, #32CEE6);
 }
 .addBtn {
   color: white;

@@ -15,6 +15,7 @@
           >
             <i class="fas fa-check"></i>
           </span>
+          {{ todoItem.title }}
           {{ todoItem.item }}
         </button>
         
